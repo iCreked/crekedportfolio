@@ -179,31 +179,3 @@ backToTopBtn.addEventListener("click", function() {
         behavior: "smooth" /* Тот самый плавный скролл */
     });
 });
-// 6. ПЛАВНЫЙ ПЕРЕХОД МЕЖДУ СТРАНИЦАМИ И ЯЗЫКАМИ
-document.addEventListener("DOMContentLoaded", () => {
-    const overlay = document.querySelector('.page-overlay');
-    
-    // Как только страница загрузилась — плавно убираем черную шторку
-    if (overlay) {
-        setTimeout(() => {
-            overlay.classList.add('fade-out');
-        }, 100);
-    }
-
-    // Перехватываем клик по тумблеру смены языка
-    const langLink = document.querySelector('.lang-switch-toggle');
-    if (langLink && overlay) {
-        langLink.addEventListener('click', function(e) {
-            e.preventDefault(); // Задерживаем переход
-            const targetUrl = this.getAttribute('href');
-
-            // Возвращаем черную шторку на экран
-            overlay.classList.remove('fade-out');
-
-            // Ждем окончания анимации затемнения (600мс) и переходим на страницу
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 550);
-        });
-    }
-});
