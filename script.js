@@ -163,3 +163,19 @@ if (slider) {
         slider.scrollLeft = scrollLeft - walk;
     });
 }
+const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        backToTopBtn.style.display = "flex";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+backToTopBtn.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" /* Тот самый плавный скролл */
+    });
+});
