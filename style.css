@@ -1,0 +1,342 @@
+/* --- БАЗОВЫЕ НАСТРОЙКИ И СБРОСЫ --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #050507;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* --- ИНЕРЦИОННЫЙ КУРСОР --- */
+.cursor-dot {
+    width: 6px; height: 6px; background: #00f0ff; border-radius: 50%;
+    position: fixed; transform: translate(-50%, -50%); pointer-events: none; z-index: 1000;
+    box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff; 
+    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.cursor-dot.hovered {
+    width: 30px; height: 30px;
+    background: rgba(0, 240, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+/* --- НАВИГАЦИЯ --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 25px 10%; position: fixed; width: 100%; top: 0; z-index: 100;
+    background: rgba(5, 5, 7, 0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+.logo { font-weight: 700; font-size: 20px; letter-spacing: 1px; color: #fff; text-decoration: none; transition: 0.3s; }
+.logo:hover { color: #00f0ff; }
+.nav-links a { color: #aaaaaa; text-decoration: none; margin-left: 35px; font-size: 14px; font-weight: 600; transition: 0.3s; }
+.nav-links a:hover { color: #fff; }
+
+/* --- ГЛАВНЫЙ ЭКРАН (Космический чёрный) --- */
+header {
+    height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 0 10%; position: relative; background-color: #050507; overflow: hidden;
+    /* Тонкая неоновая линия-стык внизу экрана */
+    border-bottom: 1px solid rgba(0, 240, 255, 0.07);
+}
+
+.hero-content-center { text-align: center; max-width: 850px; z-index: 5; }
+.main-title { font-size: 68px; font-weight: 900; line-height: 1.15; margin-bottom: 25px; color: #ffffff; }
+.cyan-accent { color: #00f0ff; }
+.hero-desc { font-size: 18px; color: #b0b0b8; max-width: 620px; margin: 0 auto 45px; line-height: 1.6; }
+
+/* --- МАТОВЫЕ КНОПКИ --- */
+.btn-group-center { display: flex; gap: 20px; justify-content: center; }
+.btn { padding: 16px 36px; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-decoration: none; border-radius: 6px; transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
+.btn-primary { background: linear-gradient(135deg, #e6006f, #bd005c); color: #fff; box-shadow: 0 4px 15px rgba(230, 0, 111, 0.2); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(230, 0, 111, 0.4); filter: brightness(1.1); }
+.btn-secondary { background: rgba(255, 255, 255, 0.04); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); }
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.08); border-color: #00f0ff; color: #00f0ff; transform: translateY(-2px); }
+
+/* --- СЕКЦИЯ: ОБО МНЕ (Контрастный антрацитовый серый) --- */
+.bio-section {
+    padding: 120px 10%;
+    background-color: #0e0e12; /* Контрастный цвет блока */
+    position: relative;
+    overflow: hidden;
+    /* Четкие неоновые границы-стыки */
+    border-top: 1px solid rgba(255, 0, 127, 0.08);
+    border-bottom: 1px solid rgba(255, 0, 127, 0.08);
+}
+.bio-container { max-width: 800px; margin: 0 auto; position: relative; z-index: 5; }
+.bio-text p { font-size: 16px; color: #b0b0b8; line-height: 1.8; margin-bottom: 20px; }
+.bio-text strong { color: #fff; }
+
+/* --- СЕКЦИЯ: ПОРТФОЛИО (Возврат в космический чёрный) --- */
+.portfolio-section {
+    padding: 120px 10%;
+    background-color: #050507; /* Контрастный цвет блока */
+    position: relative;
+    overflow: hidden;
+}
+.portfolio-container { width: 100%; position: relative; z-index: 5; }
+.section-title { font-size: 32px; font-weight: 900; text-align: center; margin-bottom: 45px; letter-spacing: 2px; color: #fff !important; }
+
+/* Фильтры портфолио */
+.portfolio-filters { 
+    display: flex; 
+    justify-content: center; 
+    gap: 12px; 
+    margin-bottom: 50px;
+    
+    /* НОВЫЕ СТРОЧКИ ДЛЯ МОБИЛЬНОГО СКРОЛЛА КНОПОК */
+    overflow-x: auto; /* Включает прокрутку, если кнопки не влезают */
+    white-space: nowrap; /* Запрещает кнопкам переноситься на новую строку */
+    padding-bottom: 10px; /* Отступ снизу для красивого зазора */
+    max-width: 100%;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #999; padding: 12px 24px; font-size: 13px; font-weight: 700; border-radius: 6px; transition: 0.3s;
+}
+.filter-btn.active { background: #00f0ff; color: #0a0a0c; border-color: #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+.filter-btn:hover:not(.active) { border-color: rgba(255,255,255,0.3); color: #fff; }
+
+/* ИСПРАВЛЕННАЯ СЕТКА КАРТОЧЕК */
+.grid { 
+    display: grid !important; 
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important; 
+    gap: 30px !important; 
+    width: 100%;
+}
+.card { background: #0d0d11; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.03); transition: all 0.35s ease; }
+.card.hide { opacity: 0; transform: scale(0.8); position: absolute; width: 0; height: 0; padding: 0; margin: 0; border: none; overflow: hidden; }
+.card:hover { transform: translateY(-6px); border-color: rgba(0, 240, 255, 0.3); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+
+.card-preview { height: 210px; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
+.card-preview.vertical-preview { background-size: contain; background-repeat: no-repeat; background-color: #020203; }
+.card-preview::before { content: ''; position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); }
+.play-icon { font-size: 36px; color: #fff; z-index: 2; opacity: 0.8; transition: 0.3s; }
+.card:hover .play-icon { transform: scale(1.15); color: #00f0ff; }
+
+.card-info { padding: 25px; }
+.card-info h3 { font-size: 18px; margin: 12px 0 8px; font-weight: 700; color: #fff !important; }
+.card-info p { color: #88888e !important; font-size: 14px; line-height: 1.5; }
+
+.badge { font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+.badge-cyan { background: rgba(0, 240, 255, 0.08); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.2); }
+.badge-pink { background: rgba(255, 0, 127, 0.08); color: #ff007f; border: 1px solid rgba(255, 0, 127, 0.2); }
+.badge-green { 
+    background: rgba(16, 185, 129, 0.08); 
+    color: #10b981; 
+    border: 1px solid rgba(16, 185, 129, 0.25); 
+}
+
+
+/* --- ЛОКАЛЬНЫЕ НЕОНОВЫЕ СФЕРЫ (С ЭФФЕКТОМ МИГАНИЯ И ДЫХАНИЯ) --- */
+.glow-sphere {
+    position: absolute !important; 
+    border-radius: 50% !important; 
+    pointer-events: none !important;
+    filter: blur(140px) !important; 
+    z-index: 1;
+}
+
+/* Розовый неон (в главном экране) */
+.glow-pink { 
+    width: 400px; height: 400px; background: #e6006f; top: 15%; left: 15%; 
+    animation: softPulseGlow 7s infinite ease-in-out; 
+}
+
+/* Бирюзовый неон (в главном экране) */
+.glow-cyan { 
+    width: 400px; height: 400px; background: #00f0ff; bottom: 10%; right: 15%; 
+    animation: softPulseGlow 7s infinite ease-in-out; 
+    animation-delay: -3.5s; /* Сдвиг по времени, чтобы они мигали по очереди */
+}
+
+/* Розово-фиолетовый неон в секции "Обо мне" — теперь тоже дышит */
+.glow-bio-pink { 
+    width: 350px; height: 350px; background: #e6006f; bottom: -10%; left: -5%; 
+    animation: softPulseGlowBio 8s infinite ease-in-out; 
+}
+
+/* Бирюзовый неон в секции "Портфолио" — теперь тоже дышит */
+.glow-portfolio-cyan { 
+    width: 450px; height: 450px; background: #00f0ff; top: -10%; right: -5%; 
+    animation: softPulseGlowPortfolio 9s infinite ease-in-out; 
+}
+
+/* --- НОВЫЕ АНИМАЦИИ МИГАНИЯ И ПУЛЬСАЦИИ ДЛЯ ВСЕХ БЛОКОВ --- */
+
+/* Общая анимация для первого экрана (смена фаз яркости) */
+@keyframes softPulseGlow { 
+    0%, 100% { opacity: 0.25; transform: scale(0.95); } 
+    50% { opacity: 0.55; transform: scale(1.1); } 
+}
+
+/* Мягкое угасание и разгорание в секции "Обо мне" */
+@keyframes softPulseGlowBio {
+    0%, 100% { opacity: 0.15; transform: scale(0.9); }
+    50% { opacity: 0.35; transform: scale(1.15); }
+}
+
+/* Мягкое угасание и разгорание в секции "Портфолио" */
+@keyframes softPulseGlowPortfolio {
+    0%, 100% { opacity: 0.12; transform: scale(0.95); }
+    50% { opacity: 0.28; transform: scale(1.1); }
+}
+
+/* --- МОДАЛЬНОЕ ОКНО --- */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 3, 5, 0.95); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; }
+.modal.active { opacity: 1; pointer-events: auto; }
+.modal-content { width: 90%; max-width: 850px; position: relative; }
+.close-modal { position: absolute; top: -45px; right: 0; font-size: 36px; color: #fff; cursor: pointer; transition: 0.3s; }
+.close-modal:hover { color: #ff007f; }
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 6px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(0, 240, 255, 0.2); }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* --- ФУТЕР И СОЦСЕТИ --- */
+footer { padding: 100px 10% 40px; text-align: center; background: #040406; border-top: 1px solid rgba(255, 255, 255, 0.02); }
+.footer-title { font-size: 24px; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
+.footer-desc { color: #66666e; margin-bottom: 40px; font-size: 15px; }
+.social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; }
+.social-btn { padding: 14px 32px; text-decoration: none; font-weight: 700; font-size: 13px; border-radius: 6px; transition: 0.3s; }
+.tg { background: #1d2b3a; color: #3ea6ff; border: 1px solid rgba(62, 166, 255, 0.2); }
+.tg:hover { background: #3ea6ff; color: #fff; box-shadow: 0 0 15px rgba(62, 166, 255, 0.4); }
+.kw { background: #162e24; color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+.kw:hover { background: #10b981; color: #fff; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+.yt { background: #2b1a1a; color: #ff4e4e; border: 1px solid rgba(255, 78, 78, 0.2); }
+.yt:hover { background: #ff4e4e; color: #fff; box-shadow: 0 0 15px rgba(255, 78, 78, 0.4); }
+.copy { font-size: 12px; color: #333; }
+
+/* Жесткий сброс выделения */
+::selection { background: transparent !important; color: inherit !important; }
+::-moz-selection { background: transparent !important; color: inherit !important; }
+
+/* --- ПОЛНОСТЬЮ ОБНОВЛЕННАЯ МОБИЛЬНАЯ АДАПТИВНОСТЬ С КРАСИВЫМ СКРОЛЛБАРОМ --- */
+@media (max-width: 768px) {
+    /* Отключаем кастомную точку на смартфонах */
+    .cursor-dot { display: none !important; }
+    
+    /* Главный заголовок делаем чуть компактнее */
+    .main-title { font-size: 38px !important; line-height: 1.2 !important; }
+    .hero-desc { font-size: 15px !important; }
+    
+    /* Перестраиваем навигацию */
+    nav {
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding: 15px 5% !important;
+    }
+    
+    /* Возвращаем ссылки меню */
+    .nav-links {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+    
+    .nav-links a {
+        margin-left: 0 !important;
+        font-size: 13px !important;
+    }
+    
+    /* Настройка кнопок фильтров для скролла пальцем слева направо */
+    .portfolio-filters {
+        justify-content: flex-start !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* === СТИЛИЗАЦИЯ НАШЕГО НЕОНОВОГО СКРОЛЛБАРА === */
+    .portfolio-filters::-webkit-scrollbar {
+        height: 5px !important; /* Ультратонкая линия */
+        display: block !important; 
+    }
+
+    /* Дорожка ползунка */
+    .portfolio-filters::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border-radius: 10px !important;
+        margin: 0 20px !important;
+    }
+
+    /* Сам округлый неоновый бегунок */
+    .portfolio-filters::-webkit-scrollbar-thumb {
+        background: #00f0ff !important;
+        border-radius: 10px !important;
+        box-shadow: 0 0 10px #00f0ff !important;
+    }
+
+    /* Эффект при наведении мыши */
+    .portfolio-filters::-webkit-scrollbar-thumb:hover {
+        background: #ff007f !important;
+        box-shadow: 0 0 10px #ff007f !important;
+    }
+
+    /* Вертикальный стек для главных кнопок и соцсетей */
+    .btn-group-center, .social-links {
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+        gap: 12px !important;
+    }
+    .social-links { max-width: 100% !important; }
+    
+    /* Сетка портфолио */
+    .grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+    .card-preview { height: 180px !important; }
+}
+/* --- ГЛОБАЛЬНЫЙ НЕОНОВЫЙ СКРОЛЛБАР ДЛЯ КНОПОК ФИЛЬТРА (ДЛЯ ПК И МОБИЛОК) --- */
+
+/* Настраиваем размер полосы прокрутки у фильтров */
+.portfolio-filters::-webkit-scrollbar {
+    height: 5px !important; /* Ультратонкая линия */
+    display: block !important; 
+}
+
+/* Дорожка, по которой бегает ползунок */
+.portfolio-filters::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 10px !important;
+    margin: 0 20px !important;
+}
+
+/* Сам округлый неоновый бегунок */
+.portfolio-filters::-webkit-scrollbar-thumb {
+    background: #00f0ff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px #00f0ff !important;
+}
+
+/* Эффект смены цвета при наведении мыши */
+.portfolio-filters::-webkit-scrollbar-thumb:hover {
+    background: #ff007f !important;
+    box-shadow: 0 0 10px #ff007f !important;
+}
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
