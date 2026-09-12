@@ -212,6 +212,16 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 .footer-desc { color: #66666e; margin-bottom: 40px; font-size: 15px; }
 .social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; }
 .social-btn { padding: 14px 32px; text-decoration: none; font-weight: 700; font-size: 13px; border-radius: 6px; transition: 0.3s; }
+.ds { 
+    background: #1a1c2e; 
+    color: #5865f2; 
+    border: 1px solid rgba(88, 101, 242, 0.2); 
+}
+.ds:hover { 
+    background: #5865f2; 
+    color: #fff; 
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4); 
+}
 .tg { background: #1d2b3a; color: #3ea6ff; border: 1px solid rgba(62, 166, 255, 0.2); }
 .tg:hover { background: #3ea6ff; color: #fff; box-shadow: 0 0 15px rgba(62, 166, 255, 0.4); }
 .kw { background: #162e24; color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
