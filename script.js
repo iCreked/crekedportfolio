@@ -179,3 +179,23 @@ backToTopBtn.addEventListener("click", function() {
         behavior: "smooth" /* Тот самый плавный скролл */
     });
 });
+// ПЛАВНЫЙ КИНЕМАТОГРАФИЧНЫЙ ПЕРЕХОД СТРАНИЦ / ЯЗЫКОВ
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.querySelector('.page-overlay');
+    if (overlay) {
+        // Убираем шторку при открытии сайта
+        setTimeout(() => { overlay.classList.add('fade-out'); }, 100);
+    }
+
+    const langLink = document.querySelector('.lang-switch-toggle');
+    if (langLink && overlay) {
+        langLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetUrl = this.getAttribute('href');
+            // Возвращаем шторку
+            overlay.classList.remove('fade-out');
+            // Переходим по ссылке после завершения анимации затухания
+            setTimeout(() => { window.location.href = targetUrl; }, 500);
+        });
+    }
+});
