@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creked - PORTFOLIO</title>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CREKED Portfolio — Video Editor</title>
+    <title>Creked портфолио</title>
     <link rel="icon" type="image/png" href="favicon.png">
     
     <link rel="stylesheet" href="style.css">
@@ -18,20 +14,35 @@
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
+    <div class="page-overlay"></div>
+
 <button id="backToTop" class="back-to-top">↑</button>
 
     <!-- курсор-точка -->
     <div class="cursor-dot"></div>
 
-    <!-- Навигация -->
+    <!-- Навигация (index.html - Русская версия) -->
     <nav>
-        <a href="#about" class="logo">CREKED portfolio</a>
+        <a href="#about" class="logo">Creked Portfolio</a>
+        
+        <!-- Контейнер ссылок -->
         <div class="nav-links">
             <a href="#bio">Обо мне</a>
             <a href="#portfolio">Портфолио</a>
             <a href="#contact">Контакты</a>
-        </div>
+            
+            <!-- МЫ ПЕРЕНЕСЛИ ТУМБЛЕР СЮДА (ВНУТРЬ NAV-LINKS) -->
+            <div class="lang-toggle-container">
+                <span class="lang-label label-ru active">RU</span>
+                <a href="index_en.html" class="lang-switch-toggle">
+                    <div class="toggle-slider btn-ru-pos"></div>
+                </a>
+                <span class="lang-label label-en">EN</span>
+            </div>
+            
+        </div> <!-- Конец nav-links -->
     </nav>
+
 
     <!-- ГЛАВНЫЙ ЭКРАН -->
     <header id="about">
