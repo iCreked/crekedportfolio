@@ -340,3 +340,29 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
     opacity: 1;
     transform: translateY(0);
 }
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #fff;
+    border: 1px solid #00f2fe; /* Твой фирменный бирюзовый неон */
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Изначально скрыта, пока клиент не проскроллит */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    z-index: 1000; /* Чтобы кнопка всегда была поверх видео */
+}
+
+.back-to-top:hover {
+    background-color: #00f2fe;
+    color: #0d0d0d;
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
+    transform: translateY(-5px); /* Кнопка прикольно приподнимается при наведении */
+}
