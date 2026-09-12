@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creked Portfolio — Video Editor</title>
+    <title>CREKED Portfolio — Video Editor</title>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREKED Portfolio — Video Editor</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+
     <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
+<button id="backToTop" class="back-to-top">↑</button>
 
-    <!-- Шторка плавного перехода между страницами -->
-    <div class="page-overlay"></div>
-
-    <!-- Кастомный курсор (Выведен на самый верхний слой) -->
+    <!-- курсор-точка -->
     <div class="cursor-dot"></div>
 
     <!-- Навигация -->
     <nav>
-        <a href="#about" class="logo">Creked Portfolio</a>
+        <a href="#about" class="logo">CREKED portfolio</a>
         <div class="nav-links">
             <a href="#bio">Обо мне</a>
             <a href="#portfolio">Портфолио</a>
             <a href="#contact">Контакты</a>
-            
-            <!-- Неоновый тумблер языков -->
-            <div class="lang-toggle-container">
-                <span class="lang-label label-ru active">RU</span>
-                <a href="index_en.html" class="lang-switch-toggle">
-                    <div class="toggle-slider btn-ru-pos"></div>
-                </a>
-                <span class="lang-label label-en">EN</span>
-            </div>
         </div>
     </nav>
 
-    <!-- Главный экран -->
+    <!-- ГЛАВНЫЙ ЭКРАН -->
     <header id="about">
         <div class="glow-sphere glow-pink"></div>
         <div class="glow-sphere glow-cyan"></div>
@@ -49,33 +48,31 @@
         </div>
     </header>
 
-    <!-- Секция: Обо мне -->
+    <!-- СЕКЦИЯ: ОБО МНЕ -->
     <section id="bio" class="bio-section">
         <div class="glow-sphere glow-bio-pink"></div>
         <div class="bio-container">
             <h2 class="section-title">ОБО МНЕ</h2>
             <div class="bio-text">
-                <p>Привет! Меня зовут <strong>Creked</strong>. Я — профессиональный видеомонтажер и саунд-дизайнер. Моя главная задача — создавать контент, который заставляет зрителя досмотреть видео до самой последней секунды.</p>
-                <p>Специализируюсь на создании динамичных <strong>Reels, Shorts и TikTok</strong> с трендовой инфографикой, а также на комплексном монтаже <strong>YouTube-шоу, подкастов и коммерческой рекламы</strong>.</p>
-                <p>Работаю в связке с современными инструментами индустрии: Adobe Premiere Pro, After Effects и DaVinci Resolve. Готов взять на себя как быструю стилизацию коротких роликов, так и сложный многокамерный монтаж крупных проектов под ключ.</p>
+                <p>Привет! Меня зовут <strong>Александр</strong>. Я — видеомонтажер. Моя главная задача — создавать контент, который заставляет зрителя досмотреть видео до самой последней секунды.</p>
+                <p>Специализируюсь на создании динамичных <strong>Игровых \ Reels, Shorts и TikTok </strong>видео, с трендовой инфографикой, а также на комплексном монтаже <strong>YouTube-шоу, подкастов и коммерческой рекламы</strong>. В каждый проект я закладываю глубокую работу со звуком, цветокоррекцию и выверенный темп повествования.</p>
+                <p>Работаю в программах: Adobe Premiere Pro + After Effects. Готов взять на себя как быструю стилизацию коротких роликов, так и сложный многокамерный монтаж крупных проектов.</p>
             </div>
         </div>
     </section>
 
-    <!-- Секция: Портфолио -->
+    <!-- СЕКЦИЯ: ПОРТФОЛИО -->
     <section id="portfolio" class="portfolio-section">
         <div class="glow-sphere glow-portfolio-cyan"></div>
         <div class="portfolio-container">
             <h2 class="section-title">ПОРТФОЛИО</h2>
             
-            <!-- Категории скроллинга -->
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">Последние работы</button>
-                <button class="filter-btn" data-filter="horizontal">Горизонтальный монтаж</button>
-                <button class="filter-btn" data-filter="vertical">Вертикальный монтаж</button>
-                <button class="filter-btn" data-filter="gaming">Игровой монтаж</button>
-            </div>
-
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">Последние работы</button>
+            <button class="filter-btn" data-filter="horizontal">Горизонтальный монтаж</button>
+            <button class="filter-btn" data-filter="vertical">Вертикальный монтаж</button>
+            <button class="filter-btn" data-filter="gaming">Игровой монтаж</button>
+        </div>
                                                 <!-- КАРТОЧКИ!!!!!!!!! -->
             <div class="grid">
 
@@ -216,11 +213,12 @@
             </div>
 
 <!-- ДЛЯ НОВЫХ ВИДЕО -->
+
             </div>
         </div>
     </section>
 
-    <!-- Модальное окно плеера -->
+    <!-- Окно для плеера -->
     <div class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -230,10 +228,10 @@
         </div>
     </div>
 
-    <!-- Футер -->
+    <!-- КОНТАКТЫ -->
     <footer id="contact">
         <h2 class="footer-title">КОНТАКТЫ</h2>
-        <p class="footer-desc">Готов поднять удержание твоих видео до максимума? Напиши мне.</p>
+        <p class="footer-desc">Готовы поднять удержание своих видео до максимума? Напишите мне.</p>
         <div class="social-links">
             <a href="https://t.me/llaammssll" class="social-btn tg">Telegram</a>
             <a href="https://kwork.ru/user/creked" class="social-btn kw">Kwork</a>
