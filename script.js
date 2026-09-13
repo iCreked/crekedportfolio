@@ -199,11 +199,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// Проверяем, есть ли в адресной строке index.html или index_en.html
-if (window.location.href.includes("index.html")) {
-    // Мягко стираем хвост index.html без перезагрузки страницы
-    window.history.replaceState({}, document.title, window.location.pathname.replace("index.html", ""));
-} else if (window.location.href.includes("index_en.html")) {
-    // Подменяем index_en.html на красивый лаконичный хвост /en
-    window.history.replaceState({}, document.title, window.location.pathname.replace("index_en.html", "en"));
-}
