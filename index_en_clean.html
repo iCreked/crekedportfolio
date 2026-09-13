@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creked portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="style.css?v=2">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+    <div class="page-overlay"></div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+    <!-- курсор -->
+    <div class="cursor-dot"></div>
+
+    <!-- Навигация (Английская версия) -->
+    <nav>
+        <a href="#about" class="logo">Creked Portfolio</a>
+        
+        <div class="nav-links">
+            <a href="#bio">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+            
+            <!-- ТУМБЛЕР -->
+            <div class="lang-toggle-container">
+                <span class="lang-label label-ru">RU</span>
+                <a href="index_clean.html" class="lang-switch-toggle">
+                    <div class="toggle-slider btn-en-pos"></div>
+                </a>
+                <span class="lang-label label-en active">EN</span>
+            </div>
+            
+        </div>
+    </nav>
+
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <header id="about">
+        <div class="glow-sphere glow-pink"></div>
+        <div class="glow-sphere glow-cyan"></div>
+        <div class="hero-content-center">
+            <h1 class="main-title">VIDEO EDITING <br><span class="cyan-accent">THAT</span> ENGAGES</h1>
+            <p class="hero-desc">I create dynamic videos, Reels, ads, and YouTube shows featuring vibrant colors and immersive sound design.</p>
+            <div class="btn-group-center">
+                <a href="#portfolio" class="btn btn-primary">View the works</a>
+                <a href="#contact" class="btn btn-secondary">Discuss the project</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЯ: ОБО МНЕ -->
+    <section id="bio" class="bio-section">
+        <div class="glow-sphere glow-bio-pink"></div>
+        <div class="bio-container">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="bio-text">
+                <p>Hi ! My name is <strong>Alexander</strong>. and I’m a video editor. My main goal is to create content that keeps viewers watching right up to the very last second.</p>
+                <p>I specialize in creating dynamic <strong>gaming videos, Reels, Shorts, and TikToks </strong>featuring trending infographics, as well as comprehensive editing for <strong>YouTube shows, podcasts, and commercials</strong>. I bring meticulous attention to sound design, color grading, and precise narrative pacing to every project.</p>
+                <p>I work with <strong>Adobe Premiere Pro and Adobe After Effects</strong>. I am equipped to handle everything from the rapid styling of short-form clips to complex multi-camera editing for large-scale projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ: ПОРТФОЛИО -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="glow-sphere glow-portfolio-cyan"></div>
+        <div class="portfolio-container">
+            <h2 class="section-title">PORTFOLIO</h2>
+            
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">Recent Works</button>
+            <button class="filter-btn" data-filter="horizontal">Horizontal Content</button>
+            <button class="filter-btn" data-filter="vertical">Shorts & Reels</button>
+            <button class="filter-btn" data-filter="gaming">Gaming Content</button>
+        </div>
+                                                <!-- КАРТОЧКИ!!!!!!!!! -->
+            <div class="grid">
+
+                <!-- СЕРБИЯ ПРИМЕР (ГОРИЗОНТАЛЬНОЕ) -->
+                <div class="card" data-category="horizontal" data-date="2026-09-13" data-video="https://www.youtube.com/embed/3D1VP60cAz8?si=BA8_4T5sFc10nD-D">
+            <div class="card-preview" style="background-image: url('images/horizontal_1.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-cyan">Horizontal</span>
+                        <h3>Example of a conversational video/vlog: with and without editing.</h3>
+                        <p>Minor color correction, B-roll; pauses and breaths in the voice track cleaned up, and background noise removed.</p>
+                    </div>
+                </div>
+                <!-- ГДЕ КОМП СТАВИТЬ (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/rodTRdjkdCQ?si=lq5G3xXHa6jvELfI">
+            <div class="card-preview" style="background-image: url('images/vertical_komp.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <h3>Video: "Where should I put my PC?"</h3>
+                        <p>Trendy bottom-pop-up subtitles, sound design.</p>
+                    </div>
+                </div>
+                                <!-- СОХРАНИТЬ 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/UGzGK_7gSjo?si=JbVBAY-qf6NgqLiF">
+            <div class="card-preview" style="background-image: url('images/vertical_mln.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <h3>Example of comment animation</h3>
+                        <p>Comment animation at the end of the Reel, featuring pre-prepared comments that fit the context.</p>
+                    </div>
+                </div>
+                                <!-- ХУК 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/-o0pEJBOomg?si=tIFcci7ZxmTGTHQS">
+            <div class="card-preview" style="background-image: url('images/vertical_hukmln.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <h3>An example of a "talking head" hook at the beginning.</h3>
+                        <p>The hook at the beginning: "How to lose 1.5 million rubles"</p>
+                    </div>
+                </div>
+                                <!-- АСТМА (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/uT2Fu1kA3Ak?si=wjK5YtsGJMe_3UHi">
+            <div class="card-preview" style="background-image: url('images/vertical_astma.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <h3>Podcast example - asthma</h3>
+                        <p>Trending bottom-pop-up subtitles, sound design, face tracking.</p>
+                    </div>
+                </div>
+                                <!-- ПОДКАСТ ФРЕЙМ (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/s0kCKgw2qlQ?si=jow4iadb0tcud7bd">
+            <div class="card-preview" style="background-image: url('images/vertical_framepod.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <h3>Podcast example - frametamer</h3>
+                        <p>Trendy bottom-pop-up subtitles, sound design.</p>
+                    </div>
+                </div>
+                                <!-- quilty МАДЖЕСТИК (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-13" data-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
+            <div class="card-preview" style="background-image: url('images/vertical_quiltymaj.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <h3>Majestic RP videos</h3>
+                        <p>Subtitles, sound design, money graphic animation</p>
+                    </div>
+                </div>
+            <!-- ИГРОВАЯ АНИМАЦИЯ (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/bfOxJpxoZe4?si=bTyshK8iR6nrVlyl">
+            <div class="card-preview" style="background-image: url('images/gaming_animation1.jpg');">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Gaming</span>
+                    <h3>Example of an animation in GTA 5 RP</h3>
+                    <p>Animation of cars from listings, addition of in-game subtitles</p>
+                </div>
+            </div>
+                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 1 (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/Ss9nLJk4hvM?si=_mNiNrIHI1lxO8Tb">
+            <div class="card-preview" style="background-image: url('images/gaming_perestrelka1.jpg');">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Gaming</span>
+                    <h3>Example of a firefight in GTA 5RP (1)</h3>
+                    <p>Glides, "underwater" music, and various effects.</p>
+                </div>
+            </div>
+                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 2 (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/1PaR9xP1U8M?si=bJF-MCyt7G3iTWBg">
+            <div class="card-preview" style="background-image: url('images/gaming_perestrelka2.jpg');">
+
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Gaming</span>
+                    <h3>Example of a firefight in GTA 5RP (2)</h3>
+                    <p>Camera pans, a momentary switch to a black-and-white screen, "underwater" audio, and various effects.</p>
+                </div>
+            </div>
+                        <!-- ПРИКОЛ В GTA5RP (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/kJmvueqBDlQ?si=Igsrf2mRWAKaxUMw">
+            <div class="card-preview" style="background-image: url('images/gaming_main1.jpg');">
+
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Gaming</span>
+                    <h3>Example of a moment involving stretches and "necks" (without meme inserts)</h3>
+                    <p>Camera shakes, screen pull and stretch, "underwater" music, and various effects.</p>
+                </div>
+            </div>
+                        <!-- СУБТИТРЫ НАД ГОЛОВОЙ GTA5RP (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/IDmjPLdkq8g?si=bjZNBUgOVDTRNBD6">
+            <div class="card-preview" style="background-image: url('images/gaming_main2.jpg');">
+
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Gaming</span>
+                    <h3>Example of a dialogue with subtitles above the head</h3>
+                    <p>In-game subtitles above characters' heads, camera shakes, "underwater" music, various effects.</p>
+                </div>
+            </div>
+
+<!-- ДЛЯ НОВЫХ ВИДЕО -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Окно для плеера -->
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="video-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer / Contacts (Английская версия) -->
+    <footer id="contact">
+        <h2 class="footer-title">CONTACTS</h2>
+        
+        <!-- MAIN DISCORD ORDER BLOCK -->
+        <div class="social-links">
+            <a href="#" class="social-btn kw">Kwork</a>
+            <a href="#" class="social-btn yt">YouTube</a>
+        </div>
+        <p class="copy">&copy; 2026 Creked Portfolio. All rights reserved.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

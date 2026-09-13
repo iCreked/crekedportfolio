@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creked портфолио</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="style.css?v=2">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+    <div class="page-overlay"></div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+    <!-- курсор -->
+    <div class="cursor-dot"></div>
+
+    <!-- Навигация (Русская версия) -->
+    <nav>
+        <a href="#about" class="logo">Creked Portfolio</a>
+        
+        <!-- Контейнер ссылок -->
+        <div class="nav-links">
+            <a href="#bio">Обо мне</a>
+            <a href="#portfolio">Портфолио</a>
+            <a href="#contact">Контакты</a>
+            
+            <!-- ТУМБЛЕР -->
+            <div class="lang-toggle-container">
+                <span class="lang-label label-ru active">RU</span>
+                <a href="index_en_clean.html" class="lang-switch-toggle">
+                    <div class="toggle-slider btn-ru-pos"></div>
+                </a>
+                <span class="lang-label label-en">EN</span>
+            </div>
+            
+        </div>
+    </nav>
+
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <header id="about">
+        <div class="glow-sphere glow-pink"></div>
+        <div class="glow-sphere glow-cyan"></div>
+        
+        <div class="hero-content-center">
+            <h1 class="main-title">МОНТАЖ <br><span class="cyan-accent">КОТОРЫЙ</span> УДЕРЖИВАЕТ</h1>
+            <p class="hero-desc">Создаю динамичные видео, Reels, рекламу и YouTube-шоу с сочным цветом и глубоким саунд-дизайном.</p>
+            <div class="btn-group-center">
+                <a href="#portfolio" class="btn btn-primary">Смотреть работы</a>
+                <a href="#contact" class="btn btn-secondary">Обсудить проект</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЯ: ОБО МНЕ -->
+    <section id="bio" class="bio-section">
+        <div class="glow-sphere glow-bio-pink"></div>
+        <div class="bio-container">
+            <h2 class="section-title">ОБО МНЕ</h2>
+            <div class="bio-text">
+                <p>Привет! Меня зовут <strong>Александр</strong>. Я — видеомонтажер. Моя главная задача — создавать контент, который заставляет зрителя досмотреть видео до самой последней секунды.</p>
+                <p>Специализируюсь на создании динамичных <strong>Игровых \ Reels, Shorts и TikTok </strong>видео, с трендовой инфографикой, а также на комплексном монтаже <strong>YouTube-шоу, подкастов и коммерческой рекламы</strong>. В каждый проект я закладываю глубокую работу со звуком, цветокоррекцию и выверенный темп повествования.</p>
+                <p>Работаю в программах: Adobe Premiere Pro + After Effects. Готов взять на себя как быструю стилизацию коротких роликов, так и сложный многокамерный монтаж крупных проектов.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ: ПОРТФОЛИО -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="glow-sphere glow-portfolio-cyan"></div>
+        <div class="portfolio-container">
+            <h2 class="section-title">ПОРТФОЛИО</h2>
+            
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">Последние работы</button>
+            <button class="filter-btn" data-filter="horizontal">Горизонтальный монтаж</button>
+            <button class="filter-btn" data-filter="vertical">Вертикальный монтаж</button>
+            <button class="filter-btn" data-filter="gaming">Игровой монтаж</button>
+        </div>
+                                                <!-- КАРТОЧКИ!!!!!!!!! -->
+            <div class="grid">
+
+                <!-- СЕРБИЯ ПРИМЕР (ГОРИЗОНТАЛЬНОЕ) -->
+                <div class="card" data-category="horizontal" data-date="2026-09-13" data-video="https://www.youtube.com/embed/3D1VP60cAz8?si=BA8_4T5sFc10nD-D">
+            <div class="card-preview" style="background-image: url('images/horizontal_1.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-cyan">Горизонтальное</span>
+                        <h3>Пример разговорного видео\влога с монтажом и без монтажа.</h3>
+                        <p>Небольшая цветокоррекция, b-roll, Почищены паузы\вздохи в голосе а так же почищен звук от шумов</p>
+                    </div>
+                </div>
+                <!-- ГДЕ КОМП СТАВИТЬ (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/rodTRdjkdCQ?si=lq5G3xXHa6jvELfI">
+            <div class="card-preview" style="background-image: url('images/vertical_komp.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Вертикальное</span>
+                        <h3>Видео "Куда ставить ПК?"</h3>
+                        <p>Трендовые субтитры всплывающие снизу, саунд-дизайн.</p>
+                    </div>
+                </div>
+                                <!-- СОХРАНИТЬ 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/UGzGK_7gSjo?si=JbVBAY-qf6NgqLiF">
+            <div class="card-preview" style="background-image: url('images/vertical_mln.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Вертикальное</span>
+                        <h3>Пример анимации комментариев</h3>
+                        <p>Анимация коментариев в конце рилса, также с уже заготовленными по смыслу коментариями людей.</p>
+                    </div>
+                </div>
+                                <!-- ХУК 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/-o0pEJBOomg?si=tIFcci7ZxmTGTHQS">
+            <div class="card-preview" style="background-image: url('images/vertical_hukmln.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Вертикальное</span>
+                        <h3>Пример хука в начале с говорящей головой.</h3>
+                        <p>Хук в начале "как потерять 1.5 млн рублей"</p>
+                    </div>
+                </div>
+                                <!-- АСТМА (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/uT2Fu1kA3Ak?si=wjK5YtsGJMe_3UHi">
+            <div class="card-preview" style="background-image: url('images/vertical_astma.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Вертикальное</span>
+                        <h3>Пример подкаста - астма</h3>
+                        <p>Трендовые субтитры всплывающие снизу, саунд-дизайн, трекинг лица.</p>
+                    </div>
+                </div>
+                                <!-- ПОДКАСТ ФРЕЙМ (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/s0kCKgw2qlQ?si=jow4iadb0tcud7bd">
+            <div class="card-preview" style="background-image: url('images/vertical_framepod.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Вертикальное</span>
+                        <h3>Пример подкаста - frametamer</h3>
+                        <p>Трендовые субтитры всплывающие снизу, саунд-дизайн.</p>
+                    </div>
+                </div>
+                                <!-- quilty МАДЖЕСТИК (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-13" data-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
+            <div class="card-preview" style="background-image: url('images/vertical_quiltymaj.jpg');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Вертикальное</span>
+                        <h3>Видео по Majestic RP</h3>
+                        <p>Субтитры, саунд-дизайн, анимация плашки денег</p>
+                    </div>
+                </div>
+            <!-- ИГРОВАЯ АНИМАЦИЯ (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/bfOxJpxoZe4?si=bTyshK8iR6nrVlyl">
+            <div class="card-preview" style="background-image: url('images/gaming_animation1.jpg');">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Игровое</span>
+                    <h3>Пример анимации в GTA5 RP</h3>
+                    <p>Анимация машин из объявлений, добавление игровых субтитров</p>
+                </div>
+            </div>
+                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 1 (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/Ss9nLJk4hvM?si=_mNiNrIHI1lxO8Tb">
+            <div class="card-preview" style="background-image: url('images/gaming_perestrelka1.jpg');">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Игровое</span>
+                    <h3>Пример перестрелки (1)</h3>
+                    <p>Шейки, музыка "под водой" и различные эффекты.</p>
+                </div>
+            </div>
+                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 2 (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/1PaR9xP1U8M?si=bJF-MCyt7G3iTWBg">
+            <div class="card-preview" style="background-image: url('images/gaming_perestrelka2.jpg');">
+
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Игровое</span>
+                    <h3>Пример перестрелки (2)</h3>
+                    <p>Шейки, черно-белый экран в моменте, музыка "под водой" и различные эффекты.</p>
+                </div>
+            </div>
+                        <!-- ПРИКОЛ В GTA5RP (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/kJmvueqBDlQ?si=Igsrf2mRWAKaxUMw">
+            <div class="card-preview" style="background-image: url('images/gaming_main1.jpg');">
+
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Игровое</span>
+                    <h3>Пример момента с растяжениями и шейками (без вставок с мемами)</h3>
+                    <p>Шейки, втягивание + растяжение экрана, музыка "под водой" и различные эффекты</p>
+                </div>
+            </div>
+                        <!-- СУБТИТРЫ НАД ГОЛОВОЙ GTA5RP (ИГРОВОЕ) -->
+            <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/IDmjPLdkq8g?si=bjZNBUgOVDTRNBD6">
+            <div class="card-preview" style="background-image: url('images/gaming_main2.jpg');">
+
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Игровое</span>
+                    <h3>Пример диалога с субтитрами над головой</h3>
+                    <p>Игровые субтитры над головами персонажей, шейки, музыка "под водой", различные эффекты</p>
+                </div>
+            </div>
+
+<!-- ДЛЯ НОВЫХ ВИДЕО -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Окно для плеера -->
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="video-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер / Контакты (Русская версия) -->
+    <footer id="contact">
+        <h2 class="footer-title">КОНТАКТЫ</h2>
+        
+        <!-- ГЛАВНЫЙ БЛОК ЗАКАЗА ЧЕРЕЗ ДИСКОРД -->
+        <div class="social-links">
+            <a href="#" class="social-btn kw">Kwork</a>
+            <a href="#" class="social-btn yt">YouTube</a>
+        </div>
+        <p class="copy">&copy; 2026 Creked Portfolio. Все права защищены.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
