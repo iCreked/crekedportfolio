@@ -41,8 +41,32 @@ nav {
     background: rgba(5, 5, 7, 0.85); backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
-.logo { font-weight: 700; font-size: 20px; letter-spacing: 1px; color: #fff; text-decoration: none; transition: 0.3s; }
-.logo:hover { color: #00f0ff; }
+/* --- СТИЛЬНЫЙ ЦИФРОВОЙ ЛОГОТИП ШАПКИ --- */
+.logo {
+    font-weight: 900 !important; /* Делаем шрифт максимально плотным */
+    font-size: 18px !important;
+    text-transform: uppercase; /* Все буквы заглавные для строгости */
+    letter-spacing: 2px !important; /* Трендовый разряд букв как в премиум-брендах */
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    position: relative !important;
+}
+
+/* Добавляем бирюзовую неоновую точку-акцент в конце логотипа */
+.logo::after {
+    content: '.' !important;
+    color: #00f0ff !important;
+    text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff !important;
+}
+
+/* Эффект при наведении мыши (Мягкое неоновое разгорание) */
+.logo:hover {
+    color: #00f0ff !important;
+    letter-spacing: 3px !important; /* Эффект легкого «дыхания» букв при наведении */
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
+}
+
 .nav-links a { color: #aaaaaa; text-decoration: none; margin-left: 35px; font-size: 14px; font-weight: 600; transition: 0.3s; }
 .nav-links a:hover { color: #fff; }
 
