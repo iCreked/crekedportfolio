@@ -391,64 +391,80 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
     opacity: 0 !important; 
 }
 
-/* --- НЕОНОВЫЙ ТУМБЛЕР ЯЗЫКОВ (АБСОЛЮТНОЕ ВЫРАВНИВАНИЕ) --- */
-.lang-toggle-container {
-    display: inline-flex !important; 
-    align-items: center !important; 
-    justify-content: center !important;
-    gap: 10px !important; 
-    margin-left: 35px !important; 
-    height: 22px !important;
-}
-.lang-label {
-    font-size: 12px !important; 
-    font-weight: 700 !important; 
-    letter-spacing: 1px !important;
-    color: #44444a !important; 
-    transition: all 0.3s ease !important; 
-    display: inline-block !important;
-    line-height: 22px !important; 
-    height: 22px !important;
-}
-.label-ru, .label-en { 
-    transform: translateY(-0.5px) !important; /* Убирает прыжок шрифта Windows */
-}
-.lang-label.active { 
-    color: #ffffff !important; 
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important; 
+/* --- МОНОЛИТНЫЙ НЕОНОВЫЙ ТУМБЛЕР (RU | ENG ВНУТРИ) --- */
+.lang-switch-box {
+    width: 90px !important;
+    height: 28px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 30px !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 10px !important;
+    text-decoration: none !important;
+    margin-left: 35px !important;
+    overflow: hidden !important;
+    transition: border-color 0.3s, box-shadow 0.3s !important;
 }
 
-.lang-switch-toggle {
-    width: 44px !important; 
-    height: 22px !important; 
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important; 
+.lang-switch-box:hover {
+    border-color: rgba(0, 240, 255, 0.3) !important;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.1) !important;
+}
+
+/* Общий стиль для букв внутри овала */
+.box-label {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.5px !important;
+    color: #44444a !important; /* Неактивные буквы будут приглушенными */
+    z-index: 3 !important; /* Буквы лежат над бегунком, чтобы их было видно */
+    transition: color 0.3s ease !important;
+    line-height: 26px !important;
+    height: 26px !important;
+    display: block !important;
+}
+
+/* Ювелирный сдвиг букв по высоте, чтобы не косили */
+.label-left { transform: translateY(-0.5px) !important; }
+.label-right { transform: translateY(-0.5px) !important; }
+
+/* Плавающий внутренний неоновый бегунок */
+.box-slider {
+    position: absolute !important;
+    top: 2px !important;
+    width: 40px !important;
+    height: 22px !important;
     border-radius: 20px !important;
-    position: relative !important; 
-    display: block !important; 
-    cursor: pointer !important; 
-    transition: 0.3s !important;
-}
-.lang-switch-toggle:hover { 
-    border-color: rgba(0, 240, 255, 0.4) !important; 
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15) !important; 
+    z-index: 2 !important;
+    transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s, box-shadow 0.3s !important;
 }
 
-.toggle-slider {
-    width: 14px !important; 
-    height: 14px !important; 
-    background: #00f0ff !important; 
-    border-radius: 50% !important;
-    position: absolute !important; 
-    top: 3px !important; 
-    box-shadow: 0 0 10px #00f0ff !important;
-    transition: left 0.3s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s !important;
+/* АВТО-НАСТРОЙКА ДЛЯ РУССКОЙ СТРАНИЦЫ */
+.page-toggle-ru .box-slider {
+    left: 3px !important;
+    background: #00f0ff !important; /* Бирюзовый бегунок на RU */
+    box-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.5) !important;
 }
-.btn-ru-pos { left: 4px !important; }
-.btn-en-pos { 
-    left: 24px !important; 
-    background: #ff007f !important; 
-    box-shadow: 0 0 10px #ff007f !important; 
+.page-toggle-ru .label-left {
+    color: #050507 !important; /* Цвет текста становится темным внутри бегунка, чтобы читался */
+}
+
+/* AВТО-НАСТРОЙКА ДЛЯ АНГЛИЙСКОЙ СТРАНИЦЫ */
+.page-toggle-en .box-slider {
+    left: 45px !important; /* Перекатывается вправо к ENG */
+    background: #ff007f !important; /* Розовый бегунок на ENG */
+    box-shadow: 0 0 10px #ff007f, 0 0 20px rgba(255, 0, 127, 0.5) !important;
+}
+.page-toggle-en .label-right {
+    color: #050507 !important; /* Текст ENG становится темным внутри розового бегунка */
+}
+
+/* Адаптация под смартфоны в самом низу файла */
+@media (max-width: 768px) {
+    .lang-switch-box { margin-left: 0 !important; margin-top: 5px !important; }
 }
 
 /* Мобильная адаптация для контейнера тумблера */
