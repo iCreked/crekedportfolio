@@ -263,7 +263,25 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
         margin-left: 0 !important;
         font-size: 13px !important;
     }
+    /* --- ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ МЕНЮ И ТУМБЛЕРА ПО ЦЕНТРУ --- */
+.site-navigation, 
+nav, 
+.nav-links {
+    display: flex !important;
+    align-items: center !important; /* Выравнивает и текст, и тумблер строго по центру одной линии */
+}
+
+/* Ювелирный фикс для самого тумблера */
+.lang-switch-box {
+    margin-left: 35px !important;
+    /* Убираем любые возможные внешние отступы, которые могли тянуть его вниз */
+    margin-top: 0 !important; 
+    margin-bottom: 0 !important;
     
+    /* Добавляем микро-сдвиг на 1 пиксель вверх, если шрифт меню визуально кажется выше */
+    transform: translateY(-1px) !important; 
+}
+
     /* Настройка кнопок фильтров для скролла пальцем слева направо */
     .portfolio-filters {
         justify-content: flex-start !important;
