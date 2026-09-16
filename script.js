@@ -142,7 +142,7 @@ const scrollObserver = new IntersectionObserver((entries, observer) => {
 }, observerOptions);
 
 document.addEventListener("DOMContentLoaded", () => {
-    const elementsToAnimate = document.querySelectorAll('.section-title, .bio-text, .portfolio-filters, .grid, footer > *');
+const elementsToAnimate = document.querySelectorAll('.section-title, .bio-text, .portfolio-filters, .grid, .reviews-grid, footer > *');
     elementsToAnimate.forEach(element => {
         element.classList.add('fade-in-section');
         scrollObserver.observe(element);
@@ -208,4 +208,47 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+});
+// 11. ИНТЕРАКТИВНЫЕ КНОПКИ РАБОТ ВНУТРИ ОТЗЫВОВ (АКТИВНЫЕ + КОНФИДЕНЦИАЛЬНЫЕ)
+document.addEventListener("DOMContentLoaded", () => {
+    const reviewCards = document.querySelectorAll('.review-card');
+    const videoModal = document.querySelector('.modal');
+    const mainVideoIframe = document.getElementById('video-player');
+    const modalButtonsWrapper = document.getElementById('modalToggleWrapper');
+    const customCursor = document.querySelector('.cursor-dot');
+
+    reviewCards.forEach(card => {
+        const videoUrl = card.getAttribute('data-review-video');
+        const isPrivate = card.getAttribute('data-private') === 'true';
+        const holder = card.querySelector('.review-video-link-holder');
+        const isEnPage = window.location.href.includes('index_en.html');
+
+        if (holder) {
+            // ВАРИАНТ 1: ЕСЛИ КЛИЕНТ ЗАПРЕТИЛ ПУБЛИКАЦИЮ (ДМИТРИЙ)
+            if (isPrivate) {
+                const privateText = isEnPage ? "Confidential / NDA 🔒" : "Конфиденциально 🔒";
+                holder.innerHTML = `<span class="review-work-btn is-private">${privateText}</span>`;
+                
+                // Для приватной кнопки увеличение курсора не работает — стиль остается строгим
+            } 
+            // ВАРИАНТ 2: ЕСЛИ ВИДЕО К ОТЗЫВУ ЕСТЬ И ЕГО МОЖНО СМОТРЕТЬ (QUITLY)
+            else if (videoUrl) {
+                const btnText = isEnPage ? "Watch project ▶" : "Смотреть работу ▶";
+                holder.innerHTML = `<span class="review-work-btn">${btnText}</span>`;
+
+                const btn = holder.querySelector('.review-work-btn');
+                
+                btn.addEventListener('mouseenter', () => { if (customCursor) customCursor.classList.add('hovered'); });
+                btn.addEventListener('mouseleave', () => { if (customCursor) customCursor.classList.remove('hovered'); });
+
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (!mainVideoIframe || !videoModal) return;
+                    if (modalButtonsWrapper) modalButtonsWrapper.innerHTML = "";
+                    mainVideoIframe.src = videoUrl + "?autoplay=1";
+                    videoModal.classList.add('active');
+                });
+            }
+        }
+    });
 });
