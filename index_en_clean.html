@@ -1,59 +1,63 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creked portfolio</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <link rel="stylesheet" href="style.css?v=2">
+    <title>Creked Portfolio</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
-    <div class="page-overlay"></div>
 
-<button id="backToTop" class="back-to-top">↑</button>
+    <!-- Smooth page -->
+    <div class="page-overlay" onload="this.classList.add('fade-out')" style="animation: autoHideOverlay 0.5s forwards;"></div>
 
-    <!-- курсор -->
+    <!-- Cursor -->
     <div class="cursor-dot"></div>
 
-    <!-- Навигация (Английская версия) -->
-    <nav>
+    <!-- Navigation hamburger -->
+    <nav class="site-navigation">
         <a href="#about" class="logo">Creked Portfolio</a>
         
-        <div class="nav-links">
-            <a href="#bio">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Platforms</a>
-            
-            <!-- ЯЗЫК -->
-            <div class="lang-toggle-container">
-            <a href="index_clean.html" class="lang-switch-box page-toggle-en">
-                <span class="box-label label-left">RU</span>
-                <span class="box-label label-right">ENG</span>
-                <div class="box-slider"></div>
-            </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <div class="nav-links-wrapper">
+            <div class="nav-links">
+                <a href="#bio" class="nav-item">About</a>
+                <a href="#portfolio" class="nav-item">Portfolio</a>
+                <a href="#contact" class="nav-item">Platforms</a>
             </div>
-            
+            <div class="toggle-holder">
+                <a href="index.html" class="lang-switch-box page-toggle-en">
+                    <span class="box-label label-left">RU</span>
+                    <span class="box-label label-right">ENG</span>
+                    <div class="box-slider"></div>
+                </a>
+            </div>
         </div>
     </nav>
 
-
-    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <!-- Hero Section -->
     <header id="about">
         <div class="glow-sphere glow-pink"></div>
         <div class="glow-sphere glow-cyan"></div>
+        
         <div class="hero-content-center">
             <h1 class="main-title">VIDEO EDITING <br><span class="cyan-accent">THAT</span> ENGAGES</h1>
-            <p class="hero-desc">I create dynamic videos, Reels, ads, and YouTube shows featuring vibrant colors and immersive sound design.</p>
+            <p class="hero-desc">Crafting dynamic videos, Reels, commercial ads, and YouTube shows with vibrant color grading and immersive sound design.</p>
             <div class="btn-group-center">
-                <a href="#portfolio" class="btn btn-primary">View the works</a>
-                <a href="#contact" class="btn btn-secondary">Discuss the project</a>
+                <a href="#portfolio" class="btn btn-primary">View Works</a>
+                <a href="#contact" class="btn btn-secondary">Discuss Project</a>
             </div>
         </div>
     </header>
 
-    <!-- СЕКЦИЯ: ОБО МНЕ -->
+    <!-- About Me Section -->
     <section id="bio" class="bio-section">
         <div class="glow-sphere glow-bio-pink"></div>
         <div class="bio-container">
@@ -65,26 +69,26 @@
             </div>
         </div>
     </section>
-
-    <!-- СЕКЦИЯ: ПОРТФОЛИО -->
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio-section">
         <div class="glow-sphere glow-portfolio-cyan"></div>
         <div class="portfolio-container">
             <h2 class="section-title">PORTFOLIO</h2>
             
-        <div class="portfolio-filters">
-            <button class="filter-btn active" data-filter="all">Recent Works</button>
-            <button class="filter-btn" data-filter="horizontal">Horizontal Content</button>
-            <button class="filter-btn" data-filter="vertical">Shorts & Reels</button>
-            <button class="filter-btn" data-filter="gaming">Gaming Content</button>
-        </div>
+            <!-- Category Navigation -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Recent Works</button>
+                <button class="filter-btn" data-filter="horizontal">Horizontal Video</button>
+                <button class="filter-btn" data-filter="vertical">Vertical Video</button>
+                <button class="filter-btn" data-filter="gaming">Gaming Montage</button>
+            </div>
                                                 <!-- КАРТОЧКИ!!!!!!!!! -->
             <div class="grid">
 
                 <!-- СЕРБИЯ ПРИМЕР (ГОРИЗОНТАЛЬНОЕ) -->
                 <div class="card" data-category="horizontal" data-date="2026-09-13" data-video="https://www.youtube.com/embed/3D1VP60cAz8?si=BA8_4T5sFc10nD-D">
             <div class="card-preview" style="background-image: url('images/horizontal_1.jpg');">
-                        <div class="play-icon">▶</div>
+                        <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
                         <span class="badge badge-cyan">Horizontal</span>
@@ -95,7 +99,7 @@
                 <!-- ГДЕ КОМП СТАВИТЬ (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/rodTRdjkdCQ?si=lq5G3xXHa6jvELfI">
             <div class="card-preview" style="background-image: url('images/vertical_komp.jpg');">
-                        <div class="play-icon">▶</div>
+                        <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
                         <span class="badge badge-pink">Shorts & Reels</span>
@@ -106,7 +110,7 @@
                                 <!-- СОХРАНИТЬ 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/UGzGK_7gSjo?si=JbVBAY-qf6NgqLiF">
             <div class="card-preview" style="background-image: url('images/vertical_mln.jpg');">
-                        <div class="play-icon">▶</div>
+                        <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
                         <span class="badge badge-pink">Shorts & Reels</span>
@@ -117,7 +121,7 @@
                                 <!-- ХУК 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/-o0pEJBOomg?si=tIFcci7ZxmTGTHQS">
             <div class="card-preview" style="background-image: url('images/vertical_hukmln.jpg');">
-                        <div class="play-icon">▶</div>
+                        <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
                         <span class="badge badge-pink">Shorts & Reels</span>
@@ -128,7 +132,7 @@
                                 <!-- АСТМА (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/uT2Fu1kA3Ak?si=wjK5YtsGJMe_3UHi">
             <div class="card-preview" style="background-image: url('images/vertical_astma.jpg');">
-                        <div class="play-icon">▶</div>
+                        <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
                         <span class="badge badge-pink">Shorts & Reels</span>
@@ -139,7 +143,7 @@
                                 <!-- ПОДКАСТ ФРЕЙМ (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/s0kCKgw2qlQ?si=jow4iadb0tcud7bd">
             <div class="card-preview" style="background-image: url('images/vertical_framepod.jpg');">
-                        <div class="play-icon">▶</div>
+                        <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
                         <span class="badge badge-pink">Shorts & Reels</span>
@@ -150,18 +154,18 @@
                                 <!-- quilty МАДЖЕСТИК (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-13" data-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
             <div class="card-preview" style="background-image: url('images/vertical_quiltymaj.jpg');">
-                        <div class="play-icon">▶</div>
+                        <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
                         <span class="badge badge-pink">Shorts & Reels</span>
-                        <h3>Majestic RP videos</h3>
+                        <h3>Majestic RP video</h3>
                         <p>Subtitles, sound design, money graphic animation</p>
                     </div>
                 </div>
             <!-- ИГРОВАЯ АНИМАЦИЯ (ИГРОВОЕ) -->
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/bfOxJpxoZe4?si=bTyshK8iR6nrVlyl">
             <div class="card-preview" style="background-image: url('images/gaming_animation1.jpg');">
-                    <div class="play-icon">▶</div>
+                    <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
                     <span class="badge badge-green">Gaming</span>
@@ -172,7 +176,7 @@
                         <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 1 (ИГРОВОЕ) -->
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/Ss9nLJk4hvM?si=_mNiNrIHI1lxO8Tb">
             <div class="card-preview" style="background-image: url('images/gaming_perestrelka1.jpg');">
-                    <div class="play-icon">▶</div>
+                    <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
                     <span class="badge badge-green">Gaming</span>
@@ -184,7 +188,7 @@
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/1PaR9xP1U8M?si=bJF-MCyt7G3iTWBg">
             <div class="card-preview" style="background-image: url('images/gaming_perestrelka2.jpg');">
 
-                    <div class="play-icon">▶</div>
+                    <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
                     <span class="badge badge-green">Gaming</span>
@@ -196,7 +200,7 @@
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/kJmvueqBDlQ?si=Igsrf2mRWAKaxUMw">
             <div class="card-preview" style="background-image: url('images/gaming_main1.jpg');">
 
-                    <div class="play-icon">▶</div>
+                    <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
                     <span class="badge badge-green">Gaming</span>
@@ -208,7 +212,7 @@
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/IDmjPLdkq8g?si=bjZNBUgOVDTRNBD6">
             <div class="card-preview" style="background-image: url('images/gaming_main2.jpg');">
 
-                    <div class="play-icon">▶</div>
+                    <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
                     <span class="badge badge-green">Gaming</span>
@@ -223,26 +227,28 @@
         </div>
     </section>
 
-    <!-- Окно для плеера -->
+    <!-- Video Popup Modal -->
     <div class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
+            <div class="modal-toggle-wrapper" id="modalToggleWrapper"></div>
             <div class="video-container">
                 <iframe id="video-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Footer / Contacts (Английская версия) -->
+    <!-- Footer / Contacts -->
     <footer id="contact">
-        <h2 class="footer-title">My platforms:</h2>
-        <div class="social-links">
+        <h2 class="footer-title">MY PLATFORMS</h2>
             <a href="https://kwork.ru/user/creked" class="social-btn kw">Kwork</a>
             <a href="https://www.youtube.com/@lesakusemon" class="social-btn yt">YouTube</a>
         </div>
         <p class="copy">&copy; 2026 Creked Portfolio. All rights reserved.</p>
     </footer>
 
+    <!-- Back to top button -->
+    <div class="back-to-top" id="scrollTopBtn">▲</div>
 
     <script src="script.js"></script>
 </body>
