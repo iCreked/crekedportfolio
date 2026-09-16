@@ -388,17 +388,27 @@ header {
     height: 100%; 
     background: rgba(0, 0, 0, 0.3); 
 }
-.play-icon { 
-    font-size: 36px; 
-    color: #fff; 
-    z-index: 2; 
-    opacity: 0.8; 
-    transition: 0.3s; 
+/* --- ГЕОМЕТРИЧЕСКАЯ ИКОНКА PLAY (ЗАЩИТА ОТ ЭМОДЗИ APPLE) --- */
+.play-icon {
+    width: 0 !important;
+    height: 0 !important;
+    /* Рисуем идеальный треугольник через прозрачные рамки */
+    border-top: 15px solid transparent !important;
+    border-bottom: 15px solid transparent !important;
+    border-left: 24px solid #ffffff !important; /* Цвет стрелочки */
+    
+    z-index: 2 !important;
+    opacity: 0.8;
+    margin-left: 6px !important; /* Небольшой сдвиг вправо для идеальной оптической центровки в круге */
+    transition: transform 0.3s, border-left-color 0.3s !important;
 }
-.card:hover .play-icon { 
-    transform: scale(1.15); 
-    color: #00f0ff; 
+
+/* Эффект при наведении (на ПК) */
+.card:hover .play-icon {
+    transform: scale(1.1);
+    border-left-color: #00f0ff !important; /* Стрелочка плавно загорается бирюзовым */
 }
+
 
 .card-info { 
     padding: 25px; 
