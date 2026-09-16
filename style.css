@@ -409,7 +409,6 @@ header {
     border-left-color: #00f0ff !important; /* Стрелочка плавно загорается бирюзовым */
 }
 
-
 .card-info { 
     padding: 25px; 
 }
@@ -510,6 +509,99 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 ::-webkit-scrollbar-track { background: #050507 !important; }
 ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1) !important; border-radius: 10px !important; }
 ::-webkit-scrollbar-thumb:hover { background: #00f0ff !important; }
+/* Компактные квадратные карточки отзывов */
+.review-card {
+    background: #0d0d11;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 240px; /* Фиксированная минимальная высота для квадратной формы */
+    transition: all 0.35s ease;
+}
+.review-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(230, 0, 111, 0.25);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+.review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a24;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+.review-user-info h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.review-user-info span { font-size: 11px; color: #66666e; }
+
+/* Микро-плашки платформ */
+.review-platform {
+    font-size: 9px;
+    font-weight: 900;
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-left: auto; /* Прижимает значок платформы к правому краю карточки */
+}
+.tg-badge { background: rgba(62, 166, 255, 0.08); color: #3ea6ff; border: 1px solid rgba(62, 166, 255, 0.2); }
+.ds-badge { background: rgba(88, 101, 242, 0.08); color: #7289da; border: 1px solid rgba(88, 101, 242, 0.2); }
+.kw-badge { background: rgba(16, 185, 129, 0.08); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+
+.review-text {
+    font-size: 13px;
+    color: #aaaaaa;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* --- НЕОНОВАЯ СФЕРА С АНИМАЦИЕЙ ПУЛЬСАЦИИ --- */
+.glow-reviews-pink { 
+    width: 400px; 
+    height: 400px; 
+    background: #e6006f; 
+    bottom: -15%; 
+    left: -5%; 
+    position: absolute; 
+    border-radius: 50%; 
+    pointer-events: none; 
+    filter: blur(140px); 
+    z-index: 1;
+    animation: softPulseGlowReviews 8s infinite ease-in-out; /* Включили пульсацию фона */
+}
+
+@keyframes softPulseGlowReviews { 
+    0%, 100% { opacity: 0.12; transform: scale(0.9); } 
+    50% { opacity: 0.32; transform: scale(1.1); } 
+}
+
+.tg-badge { background: rgba(62, 166, 255, 0.08); color: #3ea6ff; border: 1px solid rgba(62, 166, 255, 0.2); }
+.ds-badge { background: rgba(88, 101, 242, 0.08); color: #7289da; border: 1px solid rgba(88, 101, 242, 0.2); }
+.kw-badge { background: rgba(16, 185, 129, 0.08); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+
+.review-text {
+    font-size: 14px;
+    color: #aaaaaa;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Розовая сфера для фона отзывов */
+.glow-reviews-pink { width: 400px; height: 400px; background: #e6006f; bottom: -10%; left: -5%; position: absolute; border-radius: 50%; pointer-events: none; filter: blur(140px); opacity: 0.15; z-index: 1; }
+
 /* --- 14. СУПЕР-МОБИЛЬНАЯ АДАПТИВНОСТЬ С ГАМБУРГЕРОМ --- */
 @media (max-width: 768px) {
     .cursor-dot { display: none !important; }
@@ -587,4 +679,120 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
         pointer-events: none; 
         display: none !important; /* Полностью убираем блок, чтобы открыть контент */
     }
+}
+/* ==========================================================================
+   ФИЛЬТРОВАННЫЙ БЛОК ОТЗЫВОВ ДЛЯ ПК (СТРОГО 3 КОЛОНКИ)
+   ========================================================================== */
+.reviews-section {
+    padding: 120px 10% !important;
+    background-color: #0e0e12 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.03) !important;
+}
+.reviews-container { 
+    width: 100% !important; 
+    position: relative !important; 
+    z-index: 5 !important; 
+}
+
+/* Сетка отзывов строго для ПК-версии */
+.reviews-section .reviews-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Ровно 3 квадрата в ряд */
+    gap: 30px !important;
+    width: 100% !important;
+}
+
+/* Карточки-квадраты для ПК */
+.reviews-section .review-card {
+    background: #0d0d11 !important;
+    border: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-radius: 8px !important;
+    padding: 25px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 240px !important; /* Удерживает квадратную форму */
+    width: 100% !important;
+    transition: all 0.35s ease !important;
+}
+.reviews-section .review-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(230, 0, 111, 0.25) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5) !important;
+}
+
+.review-header { display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 15px !important; position: relative !important; width: 100% !important; }
+.review-avatar { width: 40px !important; height: 40px !important; border-radius: 50% !important; background-size: cover !important; background-position: center !important; background-color: #1a1a24 !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; flex-shrink: 0 !important; }
+.review-user-info h4 { font-size: 14px !important; font-weight: 700 !important; color: #fff !important; margin-bottom: 2px !important; }
+.review-user-info span { font-size: 11px !important; color: #66666e !important; }
+
+.review-platform { font-size: 9px !important; font-weight: 900 !important; padding: 3px 6px !important; border-radius: 4px !important; text-transform: uppercase !important; margin-left: auto !important; }
+.tg-badge { background: rgba(62, 166, 255, 0.08) !important; color: #3ea6ff !important; border: 1px solid rgba(62, 166, 255, 0.2) !important; }
+.ds-badge { background: rgba(88, 101, 242, 0.08) !important; color: #7289da !important; border: 1px solid rgba(88, 101, 242, 0.2) !important; }
+.kw-badge { background: rgba(16, 185, 129, 0.08) !important; color: #10b981 !important; border: 1px solid rgba(16, 185, 129, 0.2) !important; }
+.review-text { font-size: 13px !important; color: #aaaaaa !important; line-height: 1.6 !important; font-style: italic !important; }
+
+.glow-reviews-pink { width: 400px !important; height: 400px !important; background: #e6006f !important; bottom: -15% !important; left: -5% !important; position: absolute !important; border-radius: 50% !important; pointer-events: none !important; filter: blur(140px) !important; z-index: 1 !important; animation: softPulseGlowReviews 8s infinite ease-in-out !important; }
+@keyframes softPulseGlowReviews { 0%, 100% { opacity: 0.12; transform: scale(0.9); } 50% { opacity: 0.32; transform: scale(1.1); } }
+
+
+/* ==========================================================================
+   ЖЕСТКАЯ ИЗОЛИРОВАННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (СТРОГО ВНУТРИ МЕДИА-ЗАПРОСА)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* На телефонах принудительно перестраиваем сетку в вертикальный стек */
+    .reviews-section .reviews-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Строго вертикально один под другим */
+        gap: 20px !important;
+        width: 100% !important;
+    }
+    
+    .reviews-section .review-card {
+        width: 100% !important;
+        min-height: auto !important; /* Убираем фиксированную высоту квадратов */
+    }
+    
+    .reviews-section {
+        padding: 80px 6% !important; /* Компактные отступы секции на смартфонах */
+    }
+}
+/* --- КНОПКА СВЯЗАННОЙ РАБОТЫ В ОТЗЫВАХ --- */
+.review-video-link-holder {
+    margin-top: auto !important; /* Прижимает кнопку к самому низу квадрата */
+    padding-top: 15px;
+    width: 100%;
+    display: flex;
+}
+
+.review-work-btn {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    color: #00f0ff !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease !important;
+}
+
+.review-work-btn:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px #00f0ff;
+    transform: translateX(3px); /* Легкий сдвиг вправо при наведении */
+}
+/* --- СТИЛИ ДЛЯ ЗАБЛОКИРОВАННОЙ КНОПКИ (NDA / КОНФИДЕНЦИАЛЬНО) --- */
+.review-work-btn.is-private {
+    color: #44444a !important; /* Строгий приглушенный серый цвет */
+    cursor: not-allowed !important; /* Курсор мыши меняется на знак запрета */
+    text-shadow: none !important;
+}
+
+.review-work-btn.is-private:hover {
+    color: #55555e !important; /* Едва заметный отклик при наведении, без неона */
+    transform: none !important; /* Отменяем сдвиг вправо */
 }
