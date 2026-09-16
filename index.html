@@ -3,44 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creked портфолио</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <link rel="stylesheet" href="style.css?v=2">
+    <title>Creked Portfolio — Video Editor</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
-    <div class="page-overlay"></div>
 
-<button id="backToTop" class="back-to-top">↑</button>
+    <!-- Шторка перехода между страницами -->
+    <div class="page-overlay" onload="this.classList.add('fade-out')" style="animation: autoHideOverlay 0.5s forwards;"></div>
 
-    <!-- курсор -->
+    <!-- Курсор -->
     <div class="cursor-dot"></div>
 
-    <!-- Навигация (Русская версия) -->
-    <nav>
+    <!-- Навигация с гамбургером -->
+    <nav class="site-navigation">
         <a href="#about" class="logo">Creked Portfolio</a>
         
-        <!-- Контейнер ссылок -->
-        <div class="nav-links">
-            <a href="#bio">Обо мне</a>
-            <a href="#portfolio">Портфолио</a>
-            <a href="#contact">Контакты</a>
-            
-            <!-- ЯЗЫК -->
-            <div class="lang-toggle-container">
-            <a href="index_en.html" class="lang-switch-box page-toggle-ru">
-                <span class="box-label label-left">RU</span>
-                <span class="box-label label-right">ENG</span>
-                <div class="box-slider"></div>
-            </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <div class="nav-links-wrapper">
+            <div class="nav-links">
+                <a href="#bio" class="nav-item">Обо мне</a>
+                <a href="#portfolio" class="nav-item">Портфолио</a>
+                <a href="#contact" class="nav-item">Контакты</a>
             </div>
-            
+            <div class="toggle-holder">
+                <a href="index_en.html" class="lang-switch-box page-toggle-ru">
+                    <span class="box-label label-left">RU</span>
+                    <span class="box-label label-right">ENG</span>
+                    <div class="box-slider"></div>
+                </a>
+            </div>
         </div>
     </nav>
 
-
-    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <!-- Главный экран -->
     <header id="about">
         <div class="glow-sphere glow-pink"></div>
         <div class="glow-sphere glow-cyan"></div>
@@ -55,7 +56,7 @@
         </div>
     </header>
 
-    <!-- СЕКЦИЯ: ОБО МНЕ -->
+    <!-- Секция: Обо мне -->
     <section id="bio" class="bio-section">
         <div class="glow-sphere glow-bio-pink"></div>
         <div class="bio-container">
@@ -67,24 +68,24 @@
             </div>
         </div>
     </section>
-
-    <!-- СЕКЦИЯ: ПОРТФОЛИО -->
+    <!-- Секция: Портфолио -->
     <section id="portfolio" class="portfolio-section">
         <div class="glow-sphere glow-portfolio-cyan"></div>
         <div class="portfolio-container">
             <h2 class="section-title">ПОРТФОЛИО</h2>
             
-        <div class="portfolio-filters">
-            <button class="filter-btn active" data-filter="all">Последние работы</button>
-            <button class="filter-btn" data-filter="horizontal">Горизонтальный монтаж</button>
-            <button class="filter-btn" data-filter="vertical">Вертикальный монтаж</button>
-            <button class="filter-btn" data-filter="gaming">Игровой монтаж</button>
-        </div>
+            <!-- Категории скроллинга -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Последние работы</button>
+                <button class="filter-btn" data-filter="horizontal">Горизонтальный монтаж</button>
+                <button class="filter-btn" data-filter="vertical">Вертикальный монтаж</button>
+                <button class="filter-btn" data-filter="gaming">Игровой монтаж</button>
+            </div>
                                                 <!-- КАРТОЧКИ!!!!!!!!! -->
             <div class="grid">
 
                 <!-- СЕРБИЯ ПРИМЕР (ГОРИЗОНТАЛЬНОЕ) -->
-                <div class="card" data-category="horizontal" data-date="2026-09-13" data-video="https://www.youtube.com/embed/3D1VP60cAz8?si=BA8_4T5sFc10nD-D">
+                <div class="card" data-category="horizontal" data-date="2026-09-13" data-video="https://www.youtube.com/embed/3D1VP60cAz8?si=BA8_4T5sFc10nD-D" data-before="test">
             <div class="card-preview" style="background-image: url('images/horizontal_1.jpg');">
                         <div class="play-icon">▶</div>
                     </div>
@@ -225,21 +226,22 @@
         </div>
     </section>
 
-    <!-- Окно для плеера -->
+    <!-- Модальное окно плеера -->
     <div class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
+            <div class="modal-toggle-wrapper" id="modalToggleWrapper"></div>
             <div class="video-container">
                 <iframe id="video-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Футер / Контакты (Русская версия) -->
+    <!-- Футер -->
     <footer id="contact">
         <h2 class="footer-title">КОНТАКТЫ</h2>
         
-        <!-- ГЛАВНЫЙ БЛОК ЗАКАЗА ЧЕРЕЗ ДИСКОРД -->
+        <!-- ДИСКОРД -->
         <div class="main-order-block">
             <p class="order-notice">Тут вы можете удобно заказать монтаж своего видео:</p>
             <a href="https://discord.gg/pErBD6FZeb" class="social-btn ds main-ds-btn">Заказать через Discord</a>
@@ -255,6 +257,8 @@
         <p class="copy">&copy; 2026 Creked Portfolio. Все права защищены.</p>
     </footer>
 
+    <!-- Кнопка возврата наверх -->
+    <div class="back-to-top" id="scrollTopBtn">▲</div>
 
     <script src="script.js"></script>
 </body>
