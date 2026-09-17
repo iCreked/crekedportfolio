@@ -51,43 +51,52 @@ body {
 .page-overlay.fade-out { 
     opacity: 0 !important; 
 }
-/* --- СТАБИЛЬНАЯ ПК ШАПКА САЙТА --- */
-.site-navigation {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 25px 10% !important;
-    position: fixed !important;
-    width: 100% !important;
-    top: 0 !important;
-    z-index: 10000 !important;
-    background: rgba(5, 5, 7, 0.85) !important;
-    backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
-}
-
-/* Эффектный цифровой логотип */
+/* --- СТРОГИЙ СТИЛЬ ЛОГОТИПА (УМЕНЬШИЛИ ЯРКОСТЬ) --- */
 .site-navigation .logo {
     font-weight: 900 !important;
-    font-size: 18px !important;
+    font-size: 20px !important;
     text-transform: uppercase;
     letter-spacing: 2px !important;
     color: #ffffff !important;
     text-decoration: none !important;
+    text-shadow: none !important; /* Убрали постоянное свечение по умолчанию */
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
-    position: relative !important;
 }
-.site-navigation .logo::after {
-    content: '.' !important;
-    color: #00f0ff !important;
-    text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff !important;
+
+/* --- ФИКСИРОВАННАЯ ПРАВИЛЬНАЯ ПК ШАПКА САЙТА --- */
+.site-navigation {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 25px 10% !important; /* Вернули отступы, чтобы шапка не сжималась */
+    position: fixed !important; /* Закрепили сверху экрана */
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 10000 !important;
+    background: rgba(5, 5, 7, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Строгий стиль логотипа (без пересветов) */
+.site-navigation .logo {
+    font-weight: 900 !important;
+    font-size: 20px !important;
+    text-transform: uppercase;
+    letter-spacing: 2px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 .site-navigation .logo:hover {
     color: #00f0ff !important;
-    letter-spacing: 3px !important;
-    text-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4) !important;
 }
-/* Расположение ссылок на ПК */
+
+/* Обертка элементов меню справа */
 .nav-links-wrapper {
     display: flex !important;
     align-items: center !important;
@@ -99,16 +108,21 @@ body {
     align-items: center !important;
     gap: 35px !important;
 }
+
+/* Чистые матовые ссылки без неона */
 .site-navigation .nav-links a {
     color: #aaaaaa !important;
     text-decoration: none !important;
     font-size: 14px !important;
     font-weight: 600 !important;
-    transition: 0.3s !important;
+    text-shadow: none !important;
+    transition: color 0.3s ease !important;
 }
 .site-navigation .nav-links a:hover { 
-    color: #fff !important; 
+    color: #ffffff !important; 
+    text-shadow: none !important;
 }
+
 
 /* Кнопка трех полосок (Скрыта на ПК) */
 .menu-toggle { 
@@ -601,6 +615,28 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 
 /* Розовая сфера для фона отзывов */
 .glow-reviews-pink { width: 400px; height: 400px; background: #e6006f; bottom: -10%; left: -5%; position: absolute; border-radius: 50%; pointer-events: none; filter: blur(140px); opacity: 0.15; z-index: 1; }
+/* --- СТИЛИ ДЛЯ СТАТУСА "ЗАНЯТ" (КРАСНЫЙ НЕОН) --- */
+
+/* Меняем подложку и рамку всей плашки на приглушенный красный */
+.status-badge.is-busy {
+    background: rgba(239, 68, 68, 0.04) !important;
+    border-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+/* Перекрашиваем текст в строгий красный цвет */
+.status-badge.is-busy .status-text {
+    color: #ef4444 !important;
+}
+
+/* Перекрашиваем саму точку и её внутренний импульс */
+.status-badge.is-busy .status-dot {
+    background-color: #ef4444 !important;
+    box-shadow: 0 0 6px #ef4444 !important;
+}
+
+.status-badge.is-busy .status-dot::after {
+    background-color: #ef4444 !important;
+}
 
 /* --- 14. СУПЕР-МОБИЛЬНАЯ АДАПТИВНОСТЬ С ГАМБУРГЕРОМ --- */
 @media (max-width: 768px) {
@@ -612,7 +648,19 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
     .site-navigation .logo { font-size: 14px !important; letter-spacing: 1px !important; }
     
     .menu-toggle { display: block !important; z-index: 10001 !important; }
-    
+        /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ СТАТУСА */
+    .site-navigation .logo-status-container {
+        gap: 8px !important;
+    }
+    .site-navigation .status-badge {
+        padding: 6px !important; /* Превращаем плашку в аккуратный кружок вокруг точки */
+        background: transparent !important;
+        border-color: transparent !important;
+    }
+    .site-navigation .status-text {
+        display: none !important; /* Прячем длинный текст на мобилках */
+    }
+
     /* ПОЛНОЭКРАННОЕ ВЫЛЕТАЮЩЕЕ МЕНЮ */
     .nav-links-wrapper {
         position: fixed !important;
@@ -795,4 +843,78 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 .review-work-btn.is-private:hover {
     color: #55555e !important; /* Едва заметный отклик при наведении, без неона */
     transform: none !important; /* Отменяем сдвиг вправо */
+}
+::selection {
+  background: #00a256; /* Твой фирменный зеленый */
+  color: #fff;
+}
+/* --- КОНТЕЙНЕР ЛОГОТИПА И СТАТУСА --- */
+.logo-status-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important; /* Расстояние между надписью CREKED и статусом */
+}
+
+/* Обновленный логотип без точки после букв */
+.site-navigation .logo {
+    font-weight: 900 !important;
+    font-size: 20px !important; /* Слегка увеличили, так как слово стало короче */
+    text-transform: uppercase;
+    letter-spacing: 2px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+.site-navigation .logo:hover {
+    color: #00f0ff !important;
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
+}
+
+/* --- КОРРЕКЦИЯ СВЕЧЕНИЯ СТАТУС-ИНДИКАТОРА (ПРИГЛУШЕННЫЙ И ЧИТАЕМЫЙ) --- */
+.status-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.04) !important; /* Очень мягкая зеленая подложка */
+    border: 1px solid rgba(16, 185, 129, 0.12) !important; /* Тонкая рамка без пересветов */
+    padding: 5px 10px !important;
+    border-radius: 20px !important;
+    pointer-events: none;
+    transform: translateY(1.5px) !important;
+    box-shadow: none !important; /* Убираем глобальное размытие со всей плашки */
+}
+
+.status-text {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.8px !important;
+    color: #10b981 !important; /* Чистый зеленый цвет без вырвиглазного неона */
+    text-shadow: none !important; /* Убираем свечение с самих букв! */
+    line-height: 1 !important;
+}
+
+/* Оставляем неоновый акцент ТОЛЬКО для точки */
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #10b981;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 6px #10b981; /* Мягкий аккуратный маячок */
+    flex-shrink: 0;
+}
+.status-dot::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background-color: #10b981;
+    animation: statusPulse 2.3s infinite ease-out; /* Чуть замедлили пульсацию для плавности */
+}
+
+@keyframes statusPulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(2.5); opacity: 0; }
 }
