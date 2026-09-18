@@ -9,11 +9,20 @@
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Smooth page -->
     <div class="page-overlay" onload="this.classList.add('fade-out')" style="animation: autoHideOverlay 0.5s forwards;"></div>
+
+    <!-- Cursor -->
     <div class="cursor-dot"></div>
+
+    <!-- Navigation hamburger -->
     <nav class="site-navigation">
+    <!-- Новое имя и индикатор статуса (Английская версия) -->
     <div class="logo-status-container">
         <a href="#about" class="logo">CREKED</a>
+
+        <!-- <div class="status-badge is-busy"> Busy / Fully Booked -->
         <div class="status-badge">
             <span class="status-dot"></span>
             <span class="status-text">Available for work</span>
@@ -43,6 +52,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header id="about">
         <div class="glow-sphere glow-pink"></div>
         <div class="glow-sphere glow-cyan"></div>
@@ -57,6 +67,7 @@
         </div>
     </header>
 
+    <!-- About Me Section -->
     <section id="bio" class="bio-section">
         <div class="glow-sphere glow-bio-pink"></div>
         <div class="bio-container">
@@ -68,19 +79,33 @@
             </div>
         </div>
     </section>
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio-section">
         <div class="glow-sphere glow-portfolio-cyan"></div>
         <div class="portfolio-container">
             <h2 class="section-title">PORTFOLIO</h2>
             
+            <!-- Category Navigation -->
             <div class="portfolio-filters">
                 <button class="filter-btn active" data-filter="all">Recent Works</button>
                 <button class="filter-btn" data-filter="horizontal">Horizontal Video</button>
                 <button class="filter-btn" data-filter="vertical">Vertical Video</button>
                 <button class="filter-btn" data-filter="gaming">Gaming Montage</button>
             </div>
+                                                <!-- КАРТОЧКИ!!!!!!!!! -->
             <div class="grid">
-
+                <!-- Rikzario (ВЕРТИКАЛЬНОЕ) -->
+                <div class="card" data-category="vertical" data-date="2026-09-18" data-video="https://www.youtube.com/embed/lO1akytPSow?si=Y8IrsG24NRIen-Gu" data-before="test">
+            <div class="card-preview" style="background-image: url('images/vertical_rikzario.jpg');">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="card-info">
+                        <span class="badge badge-pink">Vertical</span>
+                        <h3>Example of an animation prompting the user to enter a promo code at the end of the video</h3>
+                        <p>Minor color correction; pauses and breaths in the voice track cleaned up, background noise removed, and animation added.</p>
+                    </div>
+                </div>
+                <!-- СЕРБИЯ ПРИМЕР (ГОРИЗОНТАЛЬНОЕ) -->
                 <div class="card" data-category="horizontal" data-date="2026-09-13" data-video="https://www.youtube.com/embed/3D1VP60cAz8?si=BA8_4T5sFc10nD-D">
             <div class="card-preview" style="background-image: url('images/horizontal_1.jpg');">
                         <div class="play-icon"></div>
@@ -91,66 +116,73 @@
                         <p>Minor color correction, B-roll; pauses and breaths in the voice track cleaned up, and background noise removed.</p>
                     </div>
                 </div>
+                <!-- ГДЕ КОМП СТАВИТЬ (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/rodTRdjkdCQ?si=lq5G3xXHa6jvELfI">
             <div class="card-preview" style="background-image: url('images/vertical_komp.jpg');">
                         <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
-                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <span class="badge badge-pink">Vertical</span>
                         <h3>Video: "Where should I put my PC?"</h3>
                         <p>Trendy bottom-pop-up subtitles, sound design.</p>
                     </div>
                 </div>
+                                <!-- СОХРАНИТЬ 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/UGzGK_7gSjo?si=JbVBAY-qf6NgqLiF">
             <div class="card-preview" style="background-image: url('images/vertical_mln.jpg');">
                         <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
-                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <span class="badge badge-pink">Vertical</span>
                         <h3>Example of comment animation</h3>
                         <p>Comment animation at the end of the Reel, featuring pre-prepared comments that fit the context.</p>
                     </div>
                 </div>
+                                <!-- ХУК 1.5 МЛН (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/-o0pEJBOomg?si=tIFcci7ZxmTGTHQS">
             <div class="card-preview" style="background-image: url('images/vertical_hukmln.jpg');">
                         <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
-                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <span class="badge badge-pink">Vertical</span>
                         <h3>An example of a "talking head" hook at the beginning.</h3>
                         <p>The hook at the beginning: "How to lose 1.5 million rubles"</p>
                     </div>
                 </div>
+                                <!-- АСТМА (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/uT2Fu1kA3Ak?si=wjK5YtsGJMe_3UHi">
             <div class="card-preview" style="background-image: url('images/vertical_astma.jpg');">
                         <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
-                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <span class="badge badge-pink">Vertical</span>
                         <h3>Podcast example - asthma</h3>
                         <p>Trending bottom-pop-up subtitles, sound design, face tracking.</p>
                     </div>
                 </div>
+                                <!-- ПОДКАСТ ФРЕЙМ (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/s0kCKgw2qlQ?si=jow4iadb0tcud7bd">
             <div class="card-preview" style="background-image: url('images/vertical_framepod.jpg');">
                         <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
-                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <span class="badge badge-pink">Vertical</span>
                         <h3>Podcast example - frametamer</h3>
                         <p>Trendy bottom-pop-up subtitles, sound design.</p>
                     </div>
                 </div>
+                                <!-- quilty МАДЖЕСТИК (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-13" data-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
             <div class="card-preview" style="background-image: url('images/vertical_quiltymaj.jpg');">
                         <div class="play-icon"></div>
                     </div>
                     <div class="card-info">
-                        <span class="badge badge-pink">Shorts & Reels</span>
+                        <span class="badge badge-pink">Vertical</span>
                         <h3>Majestic RP video</h3>
                         <p>Subtitles, sound design, money graphic animation</p>
                     </div>
                 </div>
+            <!-- ИГРОВАЯ АНИМАЦИЯ (ИГРОВОЕ) -->
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/bfOxJpxoZe4?si=bTyshK8iR6nrVlyl">
             <div class="card-preview" style="background-image: url('images/gaming_animation1.jpg');">
                     <div class="play-icon"></div>
@@ -161,6 +193,7 @@
                     <p>Animation of cars from listings, addition of in-game subtitles</p>
                 </div>
             </div>
+                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 1 (ИГРОВОЕ) -->
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/Ss9nLJk4hvM?si=_mNiNrIHI1lxO8Tb">
             <div class="card-preview" style="background-image: url('images/gaming_perestrelka1.jpg');">
                     <div class="play-icon"></div>
@@ -171,6 +204,7 @@
                     <p>Glides, "underwater" music, and various effects.</p>
                 </div>
             </div>
+                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 2 (ИГРОВОЕ) -->
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/1PaR9xP1U8M?si=bJF-MCyt7G3iTWBg">
             <div class="card-preview" style="background-image: url('images/gaming_perestrelka2.jpg');">
 
@@ -182,6 +216,7 @@
                     <p>Camera pans, a momentary switch to a black-and-white screen, "underwater" audio, and various effects.</p>
                 </div>
             </div>
+                        <!-- ПРИКОЛ В GTA5RP (ИГРОВОЕ) -->
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/kJmvueqBDlQ?si=Igsrf2mRWAKaxUMw">
             <div class="card-preview" style="background-image: url('images/gaming_main1.jpg');">
 
@@ -193,6 +228,7 @@
                     <p>Camera shakes, screen pull and stretch, "underwater" music, and various effects.</p>
                 </div>
             </div>
+                        <!-- СУБТИТРЫ НАД ГОЛОВОЙ GTA5RP (ИГРОВОЕ) -->
             <div class="card" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/IDmjPLdkq8g?si=bjZNBUgOVDTRNBD6">
             <div class="card-preview" style="background-image: url('images/gaming_main2.jpg');">
 
@@ -205,10 +241,13 @@
                 </div>
             </div>
 
+<!-- ДЛЯ НОВЫХ ВИДЕО -->
+
             </div>
         </div>
     </section>
 
+    <!-- Video Popup Modal -->
     <div class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -219,13 +258,18 @@
         </div>
     </div>
 
+    <!-- Секция: Отзывы (Проверенная разметка) -->
     <section id="reviews" class="reviews-section">
         <div class="glow-sphere glow-reviews-pink"></div>
         <div class="reviews-container">
-            <h2 class="section-title">REVIEWS</h2>
+            <h2 class="section-title">ОТЗЫВЫ КЛИЕНТОВ</h2>
             
             <div class="reviews-grid">
+                                <!-- <span class="review-platform kw-badge">Kwork</span> -->
+                                <!-- <span class="review-platform ds-badge">Discord</span> -->
+                                <!-- <span class="review-platform tg-badge">Telegram</span> -->
 
+                <!-- Отзыв Quitly (С поддержкой видео) -->
                 <div class="review-card" data-review-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/quitly_rev.jpg');"></div>
@@ -239,42 +283,46 @@
                     <div class="review-video-link-holder"></div>
                 </div>
 
+                <!-- Отзыв Rikzario (С поддержкой видео) -->
+                <div class="review-card" data-review-video="https://www.youtube.com/embed/lO1akytPSow?si=Y8IrsG24NRIen-Gu">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background-image: url('images/rikzario_rev.jpg');"></div>
+                        <div class="review-user-info">
+                            <h4>Rikzario</h4>
+                            <span>Streamer | Gaming blogger</span>
+                        </div>
+                        <span class="review-platform kw-badge">Kwork</span>
+                    </div>
+                    <p class="review-text">«Fast and efficient. I recommend.»</p>
+                    <div class="review-video-link-holder"></div>
+                </div>
 
+                <!-- Отзыв Дмитрий (Конфиденциальный) -->
                 <div class="review-card" data-private="true">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/krik_studio_rev.jpg');"></div>
                         <div class="review-user-info">
-                            <h4>Dmitry</h4>
-                            <span>Creator of expert- Reels</span>
+                            <h4>Krik Studio</h4>
+                            <span>Creator of expert-level Reels</span>
                         </div>
                         <span class="review-platform kw-badge">Kwork</span>
                     </div>
-                    <p class="review-text">«Thanks, I am satisfied with everything; the work was delivered on time.»</p>
+                    <p class="review-text">«Thank you, I am satisfied with everything; the work was delivered on time.»</p>
                     <div class="review-video-link-holder"></div>
                 </div>
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar" style="background-image: url('images/creked_logo.jpg');"></div>
-                        <div class="review-user-info">
-                            <h4>Order edit</h4>
-                            <span>to leave a review</span>
-                        </div>
-                    </div>
-                    <p class="review-text"></p>
-                </div>
-
-            </div>
-        </div>
     </section>
 
+    <!-- Footer / Contacts -->
     <footer id="contact">
         <h2 class="footer-title">CONTACTS</h2>
         
+        <!-- DISCORD -->
         <div class="main-order-block">
             <p class="order-notice">Order your video editing conveniently right here:</p>
             <a href="https://discord.gg/pErBD6FZeb" class="social-btn ds main-ds-btn">Order via Discord</a>
         </div>
 
+        <!-- SECONDARY LINKS -->
         <p class="footer-desc">Other contact methods and platforms:</p>
         <div class="social-links">
             <a href="https://t.me/llaammssll" class="social-btn tg">Telegram</a>
@@ -284,6 +332,7 @@
         <p class="copy">&copy; 2026 Creked Portfolio. All rights reserved.</p>
     </footer>
 
+    <!-- Back to top button -->
     <div class="back-to-top" id="scrollTopBtn">▲</div>
 
     <script src="script.js"></script>
