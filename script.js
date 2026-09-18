@@ -301,3 +301,56 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+// 12. АНИМАЦИЯ ПЛАВНОГО НАРАСТАНИЯ ЦИФР СТАТИСТИКИ ПРИ СКРОЛЛЕ
+document.addEventListener("DOMContentLoaded", () => {
+    const statsSection = document.querySelector('.stats-section');
+    const counters = document.querySelectorAll('.stat-number');
+    let animated = false;
+
+    if (statsSection && counters.length > 0) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        
+                        // Защита для нуля (дедлайны)
+                        if (target === 0) {
+                            counter.innerText = "0%";
+                            return;
+                        }
+
+                        const speed = target > 30 ? 30 : 1;
+                        
+                        const updateCount = () => {
+                            const count = +counter.innerText.replace('+', '').replace('%', '');
+                            const inc = Math.ceil(target / speed);
+
+                            if (count < target) {
+                                let displayValue = count + inc;
+                                if (displayValue > target) displayValue = target;
+                                
+                                if (target === 3) counter.innerText = displayValue + "+";
+                                else if (target === 100) counter.innerText = displayValue + "%";
+                                else counter.innerText = displayValue;
+                                
+                                setTimeout(updateCount, 40);
+                            } else {
+                                if (target === 3) counter.innerText = target + "+";
+                                else if (target === 100) counter.innerText = target + "%";
+                                else counter.innerText = target;
+                            }
+                        };
+                        updateCount();
+                    });
+                    
+                    statsObserver.unobserve(statsSection);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        statsObserver.observe(statsSection);
+    }
+});
