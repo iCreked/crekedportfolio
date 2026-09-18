@@ -751,6 +751,50 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
     gap: 30px !important;
     width: 100% !important;
 }
+/* --- СЕКЦИЯ АНИМИРОВАННОЙ СТАТИСТИКИ ДЛЯ ПК (СТРОГО В СТРОКУ) --- */
+.stats-section {
+    background: #0a0a0c !important;
+    padding: 50px 10% !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    width: 100% !important;
+}
+
+.stats-section .stats-container {
+    max-width: 1050px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: row !important; /* На ПК строго в горизонтальный ряд! */
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.stats-section .stat-item {
+    flex: 1 !important;
+}
+
+.stats-section .stat-number {
+    font-size: 42px !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
+    line-height: 1 !important;
+    background: linear-gradient(135deg, #00f0ff, #ff007f) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    display: inline-block !important;
+}
+
+.stats-section .stat-text {
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    color: #66666e !important;
+    font-weight: 700 !important;
+}
 
 /* Карточки-квадраты для ПК */
 .reviews-section .review-card {
@@ -807,6 +851,18 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
         padding: 80px 6% !important; /* Компактные отступы секции на смартфонах */
     }
 }
+    /* МОБИЛЬНАЯ АДАПТАЦИЯ БЛОКА СТАТИСТИКИ */
+    .stats-container {
+        flex-direction: column !important; /* Выстраиваем в столбик на смартфонах */
+        gap: 35px !important;
+    }
+    .stat-number {
+        font-size: 36px !important;
+    }
+    .stats-section {
+        padding: 45px 6% !important;
+    }
+
 /* --- КНОПКА СВЯЗАННОЙ РАБОТЫ В ОТЗЫВАХ --- */
 .review-video-link-holder {
     margin-top: auto !important; /* Прижимает кнопку к самому низу квадрата */
