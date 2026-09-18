@@ -79,6 +79,7 @@ function initVideoLinks() {
             videoPlayer.src = mainVideo + "?autoplay=1";
             if (modal) modal.classList.add('active');
             
+            // Если у карточки прописан исходник data-before — создаем кнопки
             if (beforeVideo) {
                 const isEn = window.location.href.includes('index_en.html');
                 const txtBefore = isEn ? "Before" : "До монтажа";
@@ -91,6 +92,15 @@ function initVideoLinks() {
                 
                 const btnBefore = toggleWrapper.querySelector('.btn-before');
                 const btnAfter = toggleWrapper.querySelector('.btn-after');
+                const customCursor = document.querySelector('.cursor-dot'); // Находим курсор
+                
+                // РАСШИРЕНИЕ КУРСOРА ДЛЯ КНОПОК ПОРТФОЛИО
+                if (btnBefore && btnAfter && customCursor) {
+                    btnBefore.addEventListener('mouseenter', () => customCursor.classList.add('hovered'));
+                    btnBefore.addEventListener('mouseleave', () => customCursor.classList.remove('hovered'));
+                    btnAfter.addEventListener('mouseenter', () => customCursor.classList.add('hovered'));
+                    btnAfter.addEventListener('mouseleave', () => customCursor.classList.remove('hovered'));
+                }
                 
                 btnBefore.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -209,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// 11. ИНТЕРАКТИВНЫЕ КНОПКИ РАБОТ ВНУТРИ ОТЗЫВОВ (АКТИВНЫЕ + КОНФИДЕНЦИАЛЬНЫЕ)
+// 11. ИНТЕРАКТИВНЫЕ КНОПКИ РАБОТ ВНУТРИ ОТЗЫВОВ (С ПОДДЕРЖКОЙ КНОПОК ДО / ПОСЛЕ В ПЛЕЕРЕ)
 document.addEventListener("DOMContentLoaded", () => {
     const reviewCards = document.querySelectorAll('.review-card');
     const videoModal = document.querySelector('.modal');
@@ -219,19 +229,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     reviewCards.forEach(card => {
         const videoUrl = card.getAttribute('data-review-video');
+        const beforeUrl = card.getAttribute('data-review-before'); // Подхватываем исходник для отзыва
         const isPrivate = card.getAttribute('data-private') === 'true';
         const holder = card.querySelector('.review-video-link-holder');
         const isEnPage = window.location.href.includes('index_en.html');
 
         if (holder) {
-            // ВАРИАНТ 1: ЕСЛИ КЛИЕНТ ЗАПРЕТИЛ ПУБЛИКАЦИЮ (ДМИТРИЙ)
+            // Вариант 1: Конфиденциальный отзыв
             if (isPrivate) {
                 const privateText = isEnPage ? "Confidential / NDA 🔒" : "Конфиденциально 🔒";
                 holder.innerHTML = `<span class="review-work-btn is-private">${privateText}</span>`;
-                
-                // Для приватной кнопки увеличение курсора не работает — стиль остается строгим
             } 
-            // ВАРИАНТ 2: ЕСЛИ ВИДЕО К ОТЗЫВУ ЕСТЬ И ЕГО МОЖНО СМОТРЕТЬ (QUITLY)
+            // Вариант 2: Отзыв со ссылкой на видео (обычное или со сравнением)
             else if (videoUrl) {
                 const btnText = isEnPage ? "Watch project ▶" : "Смотреть работу ▶";
                 holder.innerHTML = `<span class="review-work-btn">${btnText}</span>`;
@@ -243,10 +252,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    if (!mainVideoIframe || !videoModal) return;
-                    if (modalButtonsWrapper) modalButtonsWrapper.innerHTML = "";
+                    if (!mainVideoIframe || !videoModal || !modalButtonsWrapper) return;
+                    
+                    // Полностью очищаем панель переключателей перед открытием
+                    modalButtonsWrapper.innerHTML = "";
+                    
+                    // Загружаем основное видео по умолчанию
                     mainVideoIframe.src = videoUrl + "?autoplay=1";
                     videoModal.classList.add('active');
+
+                    // ЕСЛИ У ОТЗЫВА ЕСТЬ ИСХОДНИК — СОЗДАЕМ КНОПКИ В ПЛЕЕРЕ
+                    if (beforeUrl) {
+                        const txtBefore = isEnPage ? "Before" : "До монтажа";
+                        const txtAfter = isEnPage ? "After" : "После монтажа";
+
+                        modalButtonsWrapper.innerHTML = `
+                            <button class="toggle-video-btn btn-before" data-src="${beforeUrl}">${txtBefore}</button>
+                            <button class="toggle-video-btn btn-after active" data-src="${videoUrl}">${txtAfter}</button>
+                        `;
+                        
+                        const btnBefore = modalButtonsWrapper.querySelector('.btn-before');
+                        const btnAfter = modalButtonsWrapper.querySelector('.btn-after');
+                        
+                        // РАСШИРЕНИЕ КУРСOРА ДЛЯ КНОПОК В ОТЗЫВАХ
+                        if (btnBefore && btnAfter && customCursor) {
+                            btnBefore.addEventListener('mouseenter', () => customCursor.classList.add('hovered'));
+                            btnBefore.addEventListener('mouseleave', () => customCursor.classList.remove('hovered'));
+                            btnAfter.addEventListener('mouseenter', () => customCursor.classList.add('hovered'));
+                            btnAfter.addEventListener('mouseleave', () => customCursor.classList.remove('hovered'));
+                        }
+                        
+                        btnBefore.addEventListener('click', (ev) => {
+                            ev.stopPropagation();
+                            btnAfter.classList.remove('active');
+                            btnBefore.classList.add('active');
+                            mainVideoIframe.src = beforeUrl + "?autoplay=1";
+                        });
+                        
+                        btnAfter.addEventListener('click', (ev) => {
+                            ev.stopPropagation();
+                            btnBefore.classList.remove('active');
+                            btnAfter.classList.add('active');
+                            mainVideoIframe.src = videoUrl + "?autoplay=1";
+                        });
+                    }
                 });
             }
         }
