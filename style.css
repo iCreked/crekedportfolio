@@ -1035,7 +1035,7 @@ footer#contact {
     }
     @media (max-width: 768px) {
     /* ПРИНУДИТЕЛЬНО ВКЛЮЧАЕМ ИНТЕР ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ */
-    * {
+    body, h1, h2, h3, h4, p, a, span, button {
         font-family: 'Inter', sans-serif !important;
     }
     
