@@ -1,22 +1,32 @@
+/* Базовый сброс и настройки сглаживания для всех устройств */
 * {
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
     user-select: none; 
     -webkit-user-select: none; 
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
 }
+
+/* --- ШРИФТ ДЛЯ РУССКОЙ ВЕРСИИ САЙТА --- */
+html[lang="ru"] * {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- ШРИФТ ДЛЯ АНГЛИЙСКОЙ ВЕРСИИ САЙТА --- */
+html[lang="en"] * {
+    font-family: 'Unbounded', sans-serif !important;
+}
+
+
 html { 
     scroll-behavior: smooth; 
+}
 body { 
-    font-family: 'Montserrat', sans-serif !important;
     background-color: #050507; 
     color: #ffffff; 
     overflow-x: hidden; 
-}
-    /* На ПК принудительно удерживаем Montserrat для всех текстовых элементов */
-h1, h2, h3, h4, p, a, span, button {
-    font-family: 'Montserrat', sans-serif !important;
 }
 /* --- КАСТОМНЫЙ КУРСОР НА САМОМ ВЕРХНЕМ СЛОЕ --- */
 .cursor-dot {
@@ -1033,16 +1043,7 @@ footer#contact {
         gap: 20px !important;
         width: 100% !important;
     }
-    @media (max-width: 768px) {
-    /* ПРИНУДИТЕЛЬНО ВКЛЮЧАЕМ ИНТЕР ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ */
-    body, h1, h2, h3, h4, p, a, span, button {
-        font-family: 'Inter', sans-serif !important;
-    }
     
-    /* Твои остальные мобильные стили... */
-    .cursor-dot { display: none !important; }
-    .main-title { font-size: 34px !important; line-height: 1.2 !important; }
-
     .reviews-section .review-card {
         width: 100% !important;
         min-height: auto !important; /* Убираем фиксированную высоту квадратов */
