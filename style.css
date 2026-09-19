@@ -983,27 +983,47 @@ footer#contact {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
 }
 
-.stats-section .stat-item {
+/* --- ИНТЕГРИРОВАННАЯ ПАНЕЛЬ СТАТИСТИКИ ВНУТРИ "ОБО МНЕ" (ПК) --- */
+.bio-section .stats-container {
+    max-width: 1000px !important;
+    margin: 0 auto 50px !important; /* Отступ 50px снизу, чтобы отделить цифры от текста */
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    
+    /* Делаем панель полностью прозрачной и бесшовной */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+}
+
+.bio-section .stat-item {
     flex: 1 !important;
     position: relative !important;
 }
 
-/* Элегантные неоновые разделители между цифрами на ПК */
-.stats-section .stat-item:not(:last-child)::after {
+/* Изящные неоновые нити-разделители между числами */
+.bio-section .stat-item:not(:last-child)::after {
     content: '' !important;
     position: absolute !important;
     right: 0 !important;
     top: 15% !important;
     height: 70% !important;
     width: 1px !important;
-    background: linear-gradient(to bottom, transparent, rgba(255, 0, 127, 0.15), transparent) !important;
+    background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.2), transparent) !important;
 }
 
-.stats-section .stat-number {
-    font-size: 46px !important;
+.bio-section .stat-number {
+    font-size: 52px !important; /* Слегка увеличили, так как теперь нет внешних рамок */
     font-weight: 900 !important;
     color: #ffffff !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 8px !important;
     line-height: 1 !important;
     background: linear-gradient(135deg, #00f0ff, #ff007f) !important;
     -webkit-background-clip: text !important;
@@ -1011,14 +1031,13 @@ footer#contact {
     display: inline-block !important;
 }
 
-.stats-section .stat-text {
+.bio-section .stat-text {
     font-size: 11px !important;
     text-transform: uppercase !important;
     letter-spacing: 2px !important;
     color: #66666e !important;
     font-weight: 700 !important;
 }
-
 /* Карточки-квадраты для ПК */
 .reviews-section .review-card {
     background: #0d0d11 !important;
@@ -1090,6 +1109,19 @@ footer#contact {
     .stats-section .stat-item:not(:last-child)::after {
         display: none !important; /* Прячем разделители линий на телефонах */
     }
+        .bio-section .stats-container {
+        flex-direction: column !important; /* Перестраиваем в аккуратный столбик на телефонах */
+        gap: 35px !important;
+        margin-bottom: 45px !important;
+    }
+    .bio-section .stat-number {
+        font-size: 42px !important;
+    }
+    .bio-section .stat-item:not(:last-child)::after {
+        display: none !important; /* Отключаем разделители на смартфонах */
+    }
+}
+
 /* --- КНОПКА СВЯЗАННОЙ РАБОТЫ В ОТЗЫВАХ --- */
 .review-video-link-holder {
     margin-top: auto !important; /* Прижимает кнопку к самому низу квадрата */
