@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Inter:wght@600;700;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -43,14 +44,7 @@
                 <a href="#bio" class="nav-item">Обо мне</a>
                 <a href="#portfolio" class="nav-item">Портфолио</a>
                 <a href="#reviews" class="nav-item">Отзывы</a>
-                <a href="#contact" class="nav-item">Мои платформы</a>
-            </div>
-            <div class="toggle-holder">
-                <a href="index_en_clean.html" class="lang-switch-box page-toggle-ru">
-                    <span class="box-label label-left">RU</span>
-                    <span class="box-label label-right">ENG</span>
-                    <div class="box-slider"></div>
-                </a>
+                <a href="#contact" class="nav-item">Платформы</a>
             </div>
         </div>
     </nav>
@@ -69,30 +63,28 @@
             </div>
         </div>
     </header>
-    
-    <!-- СЕКЦИЯ АНИМИРОВАННОЙ СТАТИСТИКИ (Русская версия) -->
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3 class="stat-number" data-target="3">0</h3>
-                <p class="stat-text">Года в монтаже</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="stat-number" data-target="100">0</h3>
-                <p class="stat-text">Довольных клиентов</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="stat-number" data-target="0">0</h3>
-                <p class="stat-text">Сорванных дедлайнов</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Секция: Обо мне -->
     <section id="bio" class="bio-section">
         <div class="glow-sphere glow-bio-pink"></div>
         <div class="bio-container">
             <h2 class="section-title">ОБО МНЕ</h2>
+
+            <!-- ВСТАВЛЯЕМ НАШУ КАПСУЛУ СТАТИСТИКИ СЮДА -->
+            <div class="stats-container bio-stats-capsule">
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="3">0</h3>
+                    <p class="stat-text">Года в монтаже</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="100">0</h3>
+                    <p class="stat-text">Довольных клиентов</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="0">0</h3>
+                    <p class="stat-text">Сорванных дедлайнов</p>
+                </div>
+            </div>
+
             <div class="bio-text">
                 <p>Привет! Меня зовут <strong>Александр</strong>. Я — видеомонтажер. Моя главная задача — создавать контент, который заставляет зрителя досмотреть видео до самой последней секунды.</p>
                 <p>Специализируюсь на создании динамичных <strong>Игровых \ Reels, Shorts и TikTok </strong>видео, с трендовой инфографикой, а также на комплексном монтаже <strong>YouTube-шоу, подкастов и коммерческой рекламы</strong>. В каждый проект я закладываю глубокую работу со звуком, цветокоррекцию и выверенный темп повествования.</p>
@@ -343,6 +335,9 @@
         
         <div class="footer-container">
             <h2 class="footer-title">ПЛАТФОРМЫ</h2>
+
+            <!-- Разделительная сетка для второстепенных соцсетей -->
+            <div class="footer-grid-divider">
                 <div class="social-links">
                     <a href="https://kwork.ru/user/creked" class="social-btn kw" title="Kwork">Kwork</a>
                     <a href="https://www.youtube.com/@lesakusemon" class="social-btn yt" title="YouTube">YouTube</a>
