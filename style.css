@@ -348,13 +348,17 @@ header {
     border-color: rgba(255,255,255,0.3); 
     color: #fff; 
 }
-/* --- СТАБИЛЬНАЯ СЕТКА И КАРТОЧКИ ВИДЕО --- */
-.grid { 
+/* --- КОРРЕКЦИЯ СЕТКИ ДЛЯ ПЛАВНОЙ ФИЛЬТРАЦИИ --- */
+.grid {
     display: grid !important; 
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important; 
     gap: 30px !important; 
-    width: 100%; 
+    width: 100%;
+    /* Добавляем плавный переход прозрачности для всей сетки целиком */
+    transition: opacity 0.25s ease-in-out !important; 
+    will-change: opacity;
 }
+
 .card { 
     background: #0d0d11; 
     border-radius: 8px; 
@@ -454,6 +458,21 @@ header {
 .glow-sphere { position: absolute !important; border-radius: 50% !important; pointer-events: none !important; filter: blur(140px) !important; z-index: 1; }
 .glow-pink { width: 400px; height: 400px; background: #e6006f; top: 15%; left: 15%; animation: softPulseGlow 7s infinite ease-in-out; }
 .glow-cyan { width: 400px; height: 400px; background: #00f0ff; bottom: 10%; right: 15%; animation: softPulseGlow 7s infinite ease-in-out; animation-delay: -3.5s; }
+/* ГЛУБОКАЯ БИРЮЗОВАЯ СФЕРА ДЛЯ ПОДВАЛА */
+.glow-contact-cyan {
+    width: 500px !important;
+    height: 500px !important;
+    background: #00f0ff !important;
+    bottom: -20% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    position: absolute !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    filter: blur(150px) !important;
+    z-index: 1 !important;
+    animation: softPulseGlowContact 8s infinite ease-in-out !important;
+}
 .glow-bio-pink { width: 350px; height: 350px; background: #e6006f; bottom: -10%; left: -5%; animation: softPulseGlowBio 8s infinite ease-in-out; }
 .glow-portfolio-cyan { width: 450px; height: 450px; background: #00f0ff; top: -10%; right: -5%; animation: softPulseGlowPortfolio 9s infinite ease-in-out; }
 
@@ -481,10 +500,46 @@ header {
 
 /* --- 11. ФУТЕР И ГЛАВНАЯ НЕОНОВАЯ КНОПКА DISCORD --- */
 footer { padding: 100px 10% 40px; text-align: center; background: #040406; border-top: 1px solid rgba(255, 255, 255, 0.02); }
-.footer-title { font-size: 24px; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
-
-.main-order-block { margin: 30px auto 45px; max-width: 400px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-.order-notice { font-size: 16px !important; font-weight: 600 !important; color: #ffffff !important; letter-spacing: 0.5px; line-height: 1.5; }
+.footer-title {
+    font-size: 26px !important;
+    font-weight: 900 !important;
+    letter-spacing: 3px !important;
+    text-align: center !important;
+    margin-bottom: 50px !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
+}
+/* Сетка-разделитель в швейцарском стиле */
+.footer-grid-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.04) !important; /* Тонкая горизонтальная линия */
+    padding-top: 40px !important;
+    margin-bottom: 50px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+.footer-container {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+/* Блок главного заказа */
+.main-order-block {
+    margin: 0 auto 60px !important;
+    max-width: 500px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+.order-notice {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #aaaaaa !important;
+    text-align: center !important;
+    letter-spacing: 0.5px;
+}
 
 .main-ds-btn {
     width: 100% !important; padding: 18px 40px !important; font-size: 14px !important; text-transform: uppercase; letter-spacing: 1.5px; display: inline-block; text-align: center;
@@ -495,8 +550,20 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 }
 .main-ds-btn:hover { transform: translateY(-3px) !important; color: #ffffff !important; background: #5865f2 !important; box-shadow: 0 0 25px #5865f2, 0 0 50px rgba(88, 101, 242, 0.4) !important; }
 
-.footer-desc { margin-bottom: 25px !important; font-size: 14px !important; color: #55555e !important; }
-.social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; }
+.footer-desc {
+    font-size: 13px !important;
+    color: #55555e !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 !important;
+}
+/* Горизонтальный ряд кнопок */
+.social-links {
+    display: flex !important;
+    gap: 15px !important;
+    margin: 0 !important;
+}
 .social-btn { padding: 14px 32px; text-decoration: none; font-weight: 700; font-size: 13px; border-radius: 6px; transition: 0.3s; }
 .tg { background: #1d2b3a; color: #3ea6ff; border: 1px solid rgba(62, 166, 255, 0.15); }
 .tg:hover { background: #3ea6ff; color: #fff; box-shadow: 0 0 15px rgba(62, 166, 255, 0.4); }
@@ -504,7 +571,12 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 .kw:hover { background: #10b981; color: #fff; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
 .yt { background: #2b1a1a; color: #ff4e4e; border: 1px solid rgba(255, 78, 78, 0.15); }
 .yt:hover { background: #ff4e4e; color: #fff; box-shadow: 0 0 15px rgba(255, 78, 78, 0.4); }
-.copy { font-size: 12px; color: #333; }
+.copy {
+    font-size: 11px !important;
+    color: #33333a !important;
+    text-align: center !important;
+    letter-spacing: 0.5px;
+}
 
 /* --- 12. КНОПКА ВОЗВРАТА НАВЕРХ --- */
 .back-to-top {
@@ -581,7 +653,97 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
     line-height: 1.6;
     font-style: italic;
 }
+/* --- ПЛАВНАЯ КИНЕМАТОГРАФИЧНАЯ АНИМАЦИЯ КАРТОЧЕК --- */
+.card {
+    /* Настраиваем мягкий переход для всех базовых свойств */
+    transition: opacity 0.5s ease, transform 0.5s ease, max-height 0.5s ease, padding 0.5s ease, margin 0.5s ease !important;
+    opacity: 1;
+    transform: scale(1);
+    max-height: 1000px; /* Достаточная высота, чтобы карточка открылась полностью */
+    overflow: hidden;
+}
 
+/* Эффектный красивый запуск схлопывания карточек */
+.card.initial-hide {
+    opacity: 0 !important;
+    transform: scale(0.9) !important; /* Легкое уменьшение при закрытии */
+    max-height: 0 !important; /* Плавно сжимаем высоту до нуля */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border: none !important;
+    pointer-events: none; /* Блокируем клики по скрытым картам */
+}
+
+
+.more-works-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* --- ПРОДВИНУТАЯ АНИМАЦИЯ И СТИЛИЗАЦИЯ КНОПКИ РАСКРЫТИЯ --- */
+
+/* Плавный переход для всех карточек при скрытии/раскрытии */
+.card {
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Эффектное схлопывание для скрытых по умолчанию работ */
+.card.initial-hide {
+    opacity: 0 !important;
+    transform: scale(0.9) !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+.more-works-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+/* Компактная овальная капсула в стиле тумблера */
+.load-more-btn {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    padding: 10px 28px !important; /* Уменьшили отступы, сделали кнопку компактнее */
+    font-size: 11px !important; /* Более аккуратный, строгий шрифт */
+    font-weight: 700 !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 30px !important; /* Сделали кнопку идеально круглой/овальной */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.load-more-btn:hover {
+    border-color: #00f0ff !important;
+    color: #00f0ff !important;
+    background: rgba(0, 240, 255, 0.03) !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+footer#contact {
+    background: #0e0e12 !important;
+    padding: 120px 10% 40px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.02) !important;
+}
 /* --- НЕОНОВАЯ СФЕРА С АНИМАЦИЕЙ ПУЛЬСАЦИИ --- */
 .glow-reviews-pink { 
     width: 400px; 
@@ -637,9 +799,22 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 .status-badge.is-busy .status-dot::after {
     background-color: #ef4444 !important;
 }
+@keyframes softPulseGlowContact {
+    0%, 100% { opacity: 0.06; transform: translateX(-50%) scale(0.95); }
+    50% { opacity: 0.18; transform: translateX(-50%) scale(1.08); }
+}
 
 /* --- 14. СУПЕР-МОБИЛЬНАЯ АДАПТИВНОСТЬ С ГАМБУРГЕРОМ --- */
 @media (max-width: 768px) {
+        footer#contact { padding: 80px 6% 30px !important; }
+    .footer-grid-divider {
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .social-links { width: 100% !important; }
+    .social-links .social-btn { flex: 1 !important; text-align: center !important; padding: 12px 5px !important; font-size: 12px !important; }
     .cursor-dot { display: none !important; }
     .main-title { font-size: 34px !important; line-height: 1.2 !important; }
     .hero-desc { font-size: 14px !important; }
@@ -709,9 +884,22 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
     /* УВЕЛИЧЕННАЯ КНОПКА НАВЕРХ ДЛЯ ТЕЛЕФОНОВ */
     .back-to-top { bottom: 25px !important; right: 25px !important; width: 54px !important; height: 54px !important; font-size: 18px !important; background: rgba(5, 5, 7, 0.9) !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; }
 
-    /* ГОРИЗОНТАЛЬНЫЕ КНОПКИ ВТОРОСТЕПЕННЫХ СОЦСЕТЕЙ */
-    .social-links { flex-direction: row !important; justify-content: center !important; gap: 10px !important; width: 100% !important; max-width: 100% !important; padding: 0 10px !important; margin-bottom: 40px !important; }
-    .social-btn { flex: 1 !important; padding: 12px 5px !important; font-size: 12px !important; text-align: center !important; white-space: nowrap !important; border-radius: 6px !important; }
+/* Изящные матовые кнопки с аккуратными рамками */
+.social-links .social-btn {
+    padding: 12px 28px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    border-radius: 6px !important;
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: #88888e !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Плавная неоновая подсветка рамок при наведении */
+.social-links .social-btn.tg:hover { border-color: #3ea6ff !important; color: #3ea6ff !important; background: rgba(62, 166, 255, 0.02) !important; }
+.social-links .social-btn.kw:hover { border-color: #10b981 !important; color: #10b981 !important; background: rgba(16, 185, 129, 0.02) !important; }
+.social-links .social-btn.yt:hover { border-color: #ff4e4e !important; color: #ff4e4e !important; background: rgba(255, 78, 78, 0.02) !important; }
 }
 /* --- АВТОМАТИЧЕСКОЕ РАСТВОРЕНИЕ ШТОРКИ ПРИ ЗАГРУЗКЕ --- */
 @keyframes autoHideOverlay {
