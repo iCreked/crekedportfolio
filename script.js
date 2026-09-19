@@ -465,3 +465,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+// 14. ХИТРАЯ КОРРЕКЦИЯ АДРЕСНОЙ СТРОКИ (УБИРАЕМ ХВОСТЫ СТРАНИЦ)
+document.addEventListener("DOMContentLoaded", () => {
+    const currentUrl = window.location.href;
+
+    // Если в строке браузера горит index_en.html или index.html
+    if (currentUrl.includes("index_en.html") || currentUrl.includes("index.html")) {
+        
+        // Формируем идеально чистый путь без имени файла
+        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname.replace("index_en.html", "").replace("index.html", "");
+        
+        // Бесшумно подменяем адресную строку для пользователя
+        window.history.replaceState({ path: cleanUrl }, "", cleanUrl);
+    }
+});
