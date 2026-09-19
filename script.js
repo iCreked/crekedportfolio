@@ -37,28 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cardElements.forEach(card => grid.appendChild(card));
     }
 });
-
-// 3. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ КАТЕГОРИЙ ПОРТФОЛИО (ВКЛАДКИ)
-const filterButtons = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.card');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const filterValue = button.getAttribute('data-filter');
-
-        const currentCards = document.querySelectorAll('.card');
-        currentCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-            if (filterValue === 'all' || filterValue === cardCategory) {
-                card.classList.remove('hide');
-            } else {
-                card.classList.add('hide');
-            }
-        });
-    });
-});
 // 4. УМНЫЙ ПЛЕЕР С АВТО-КНОПКАМИ "ДО / ПОСЛЕ" (СТАБИЛЬНЫЙ)
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.close-modal');
@@ -353,4 +331,137 @@ document.addEventListener("DOMContentLoaded", () => {
 
         statsObserver.observe(statsSection);
     }
+});
+// ==========================================================================
+// ОБЪЕДИНЕННАЯ СИСТЕМА УМНОЙ ФИЛЬТРАЦИИ И ДВУХСТОРОННЕГО РАСКРЫТИЯ ПОРТФОЛИО
+// ==========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const portfolioSection = document.getElementById('portfolio');
+    const customCursor = document.querySelector('.cursor-dot');
+    const isEn = window.location.href.includes('index_en.html');
+
+    let isExpanded = false; // Флаг: развернул ли пользователь вкладку "all" вручную
+    let currentFilter = 'all'; // Текущий активный фильтр
+
+    // Маркируем все скрытые по умолчанию карточки (с 9 по 13), чтобы скрипт их запомнил
+    const initialHiddenCards = document.querySelectorAll('.card.initial-hide');
+    initialHiddenCards.forEach(card => card.setAttribute('data-dynamic-hide', 'true'));
+
+    // Функция обновления сетки в зависимости от фильтра и состояния кнопки
+    function updatePortfolioGrid() {
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            const isDynamicHide = card.getAttribute('data-dynamic-hide') === 'true';
+
+            // Условие 1: Подходит ли карточка под выбранный фильтр категорий?
+            const matchesFilter = (currentFilter === 'all' || cardCategory === currentFilter);
+
+            // Условие 2: Должна ли карточка быть скрыта лимитом (если фильтр "all" и кнопка не нажата)
+            const shouldHideByLimit = (currentFilter === 'all' && isDynamicHide && !isExpanded);
+
+            if (matchesFilter && !shouldHideByLimit) {
+                // Плавно показываем карточку
+                card.classList.remove('initial-hide');
+                if (customCursor) {
+                    card.addEventListener('mouseenter', () => customCursor.classList.add('hovered'));
+                    card.addEventListener('mouseleave', () => customCursor.classList.remove('hovered'));
+                }
+            } else {
+                // Плавно скрываем карточку
+                card.classList.add('initial-hide');
+            }
+        });
+
+        // Управляем отображением и текстом кнопки "Показать все работы"
+        if (loadMoreBtn) {
+            if (currentFilter !== 'all') {
+                // Если выбран конкретный подканал монтажа, прячем кнопку (все работы уже на экране)
+                loadMoreBtn.parentElement.style.display = 'none';
+            } else {
+                // Если мы на вкладке "Последние работы", возвращаем кнопку на место
+                loadMoreBtn.parentElement.style.display = 'flex';
+                loadMoreBtn.innerText = isExpanded 
+                    ? (isEn ? "Hide projects ↖" : "Скрыть работы ↖") 
+                    : (isEn ? "Show all projects ↘" : "Показать все работы ↘");
+            }
+        }
+
+        // Переинициализируем плееры для всех видимых на данный момент карточек
+        if (typeof initVideoLinks === 'function') {
+            initVideoLinks();
+        }
+    }
+
+    // ЛОГИКА КЛИКА ПО КНОПКАМ ФИЛЬТРОВ КАТЕГОРИЙ (С ФИКСАЦИЕЙ ВЫСОТЫ БЕЗ СКАЧКОВ)
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const grid = document.querySelector('.grid');
+            const portfolioContainer = document.querySelector('.portfolio-container');
+            
+            if (button.classList.contains('active')) return;
+
+            // 1. Измеряем и жестко фиксируем текущую высоту контейнера, чтобы нижние блоки не прыгали
+            if (portfolioContainer) {
+                portfolioContainer.style.minHeight = portfolioContainer.offsetHeight + 'px';
+            }
+
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            currentFilter = button.getAttribute('data-filter');
+            
+            if (grid) {
+                // ФАЗА 1: Плавно гасим сетку
+                grid.style.opacity = '0';
+                
+                // ФАЗА 2: Пока всё скрыто (через 250мс)
+                setTimeout(() => {
+                    // Пересчитываем карточки за кулисами
+                    updatePortfolioGrid();
+                    
+                    // ФАЗА 3: Зажигаем сетку обратно
+                    grid.style.opacity = '1';
+                    
+                    // ФАЗА 4: После того как сетка проявилась (еще через 250мс), мягко отпускаем высоту под новые карты
+                    setTimeout(() => {
+                        if (portfolioContainer) {
+                            portfolioContainer.style.transition = 'min-height 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+                            portfolioContainer.style.minHeight = '0px'; // Возвращаем в авто-режим
+                        }
+                    }, 250);
+                }, 250);
+            } else {
+                updatePortfolioGrid();
+            }
+        });
+    });
+
+    // ЛОГИКА КЛИКА ПО КНОПКЕ "ПОКАЗАТЬ ВСЕ / СКРЫТЬ РАБОТЫ" (БАРХАТНАЯ АНИМАЦИЯ)
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+            if (!isExpanded) {
+                // РЕЖИМ: Разворачиваем вкладку "all" (тут всё отлично и плавно)
+                isExpanded = true;
+                updatePortfolioGrid();
+            } else {
+                // РЕЖИМ: БАРХАТНОЕ СВЕРНУТЬ РАБОТЫ (БЕЗ ЕДИНОГО РЫВКА)
+                isExpanded = false;
+
+                // 1. Сначала плавно и мягко запускаем скролл наверх к заголовку
+                if (portfolioSection) {
+                    portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                // 2. Даем экрану 150мс, чтобы уйти наверх, и только тогда незаметно для глаз схлопываем карточки снизу
+                setTimeout(() => {
+                    updatePortfolioGrid();
+                }, 150);
+            }
+        });
+    }
+
 });
