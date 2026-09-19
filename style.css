@@ -8,11 +8,15 @@
 }
 html { 
     scroll-behavior: smooth; 
-}
 body { 
+    font-family: 'Montserrat', sans-serif !important;
     background-color: #050507; 
     color: #ffffff; 
     overflow-x: hidden; 
+}
+    /* На ПК принудительно удерживаем Montserrat для всех текстовых элементов */
+h1, h2, h3, h4, p, a, span, button {
+    font-family: 'Montserrat', sans-serif !important;
 }
 /* --- КАСТОМНЫЙ КУРСОР НА САМОМ ВЕРХНЕМ СЛОЕ --- */
 .cursor-dot {
