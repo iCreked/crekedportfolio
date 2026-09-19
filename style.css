@@ -953,32 +953,32 @@ footer#contact {
     gap: 30px !important;
     width: 100% !important;
 }
-/* --- ОБНОВЛЕННАЯ НЕОНОВАЯ ПАНЕЛЬ СТАТИСТИКИ (ПК) --- */
+/* --- СЕКЦИЯ АНИМИРОВАННОЙ СТАТИСТИКИ (ПК-ВЕРСИЯ СТРОГО В РЯД) --- */
 .stats-section {
     background: transparent !important; /* Убираем плоский черный фон */
-    padding: 30px 10% 60px !important; /* Настраиваем аккуратные отступы */
+    padding: 30px 10% 60px !important;
     position: relative !important;
     z-index: 20 !important;
     width: 100% !important;
 }
 
-/* Превращаем контейнер в парящую матовую капсулу */
+/* Ограничиваем горизонтальное расположение только для больших экранов */
 .stats-section .stats-container {
     max-width: 1050px !important;
     margin: 0 auto !important;
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: row !important; /* НА ПК СТРОГО В ГОРИЗОНТАЛЬНУЮ ЛИНИЮ */
     justify-content: space-between !important;
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
     
     /* Стили футуристичной панели */
-    background: rgba(13, 13, 17, 0.6) !important; /* Полупрозрачная подложка */
-    border: 1px solid rgba(0, 240, 255, 0.08) !important; /* Тонкая бирюзовая рамка */
+    background: rgba(13, 13, 17, 0.6) !important;
+    border: 1px solid rgba(0, 240, 255, 0.08) !important;
     padding: 35px 40px !important;
-    border-radius: 16px !important; /* Закругляем углы панели */
-    backdrop-filter: blur(16px) !important; /* Дизайнерское размытие под панелью */
+    border-radius: 16px !important;
+    backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
 }
@@ -988,7 +988,7 @@ footer#contact {
     position: relative !important;
 }
 
-/* Добавляем тонкие неоновые разделители между цифрами (только на ПК) */
+/* Элегантные неоновые разделители между цифрами на ПК */
 .stats-section .stat-item:not(:last-child)::after {
     content: '' !important;
     position: absolute !important;
@@ -1000,12 +1000,12 @@ footer#contact {
 }
 
 .stats-section .stat-number {
-    font-size: 46px !important; /* Слегка укрупнили для мощности */
+    font-size: 46px !important;
     font-weight: 900 !important;
     color: #ffffff !important;
     margin-bottom: 6px !important;
     line-height: 1 !important;
-    background: linear-gradient(135deg, #00f0ff, #ff007f) !important; /* Оставляем твой сочный градиент */
+    background: linear-gradient(135deg, #00f0ff, #ff007f) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     display: inline-block !important;
@@ -1014,7 +1014,7 @@ footer#contact {
 .stats-section .stat-text {
     font-size: 11px !important;
     text-transform: uppercase !important;
-    letter-spacing: 2px !important; /* Добавили журнального воздуха буквам */
+    letter-spacing: 2px !important;
     color: #66666e !important;
     font-weight: 700 !important;
 }
@@ -1073,26 +1073,23 @@ footer#contact {
     .reviews-section {
         padding: 80px 6% !important; /* Компактные отступы секции на смартфонах */
     }
-}
-    /* МОБИЛЬНАЯ АДАПТАЦИЯ НЕОНОВОЙ ПАНЕЛИ */
+    /* ИЗОЛИРОВАННЫЙ МОБИЛЬНЫЙ ПЕРЕНОС В СТОЛБИК (ТОЛЬКО ДЛЯ СМАРТФОНОВ) */
     .stats-section {
         padding: 20px 6% 50px !important;
     }
     .stats-section .stats-container {
-        flex-direction: column !important; /* Перестраиваем в столбик на смартфонах */
+        flex-direction: column !important; /* Перестраиваем в столбик только на телефонах */
         gap: 40px !important;
         padding: 40px 25px !important;
         border-radius: 12px !important;
-        background: rgba(13, 13, 17, 0.8) !important; /* Чуть плотнее фон для читаемости */
+        background: rgba(13, 13, 17, 0.8) !important;
     }
     .stats-section .stat-number {
         font-size: 38px !important;
     }
-    /* Отключаем разделительные линии на мобилках, чтобы не ломали визуал */
     .stats-section .stat-item:not(:last-child)::after {
-        display: none !important;
+        display: none !important; /* Прячем разделители линий на телефонах */
     }
-
 /* --- КНОПКА СВЯЗАННОЙ РАБОТЫ В ОТЗЫВАХ --- */
 .review-video-link-holder {
     margin-top: auto !important; /* Прижимает кнопку к самому низу квадрата */
