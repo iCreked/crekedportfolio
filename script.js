@@ -279,13 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-// 12. АНИМАЦИЯ ПЛАВНОГО НАРАСТАНИЯ ЦИФР СТАТИСТИКИ ПРИ СКРОЛЛЕ
+// 12. АНИМАЦИЯ ПЛАВНОГО НАРАСТАНИЯ ЦИФР СТАТИСТИКИ (ОБНОВЛЕННАЯ С ОДНОВРЕМЕННЫМ ЗАПУСКОМ)
 document.addEventListener("DOMContentLoaded", () => {
-    const statsSection = document.querySelector('.stats-section');
-    const counters = document.querySelectorAll('.stat-number');
+    const statsContainer = document.querySelector('.bio-stats-capsule');
+    const counters = document.querySelectorAll('.bio-stats-capsule .stat-number');
     let animated = false;
 
-    if (statsSection && counters.length > 0) {
+    if (statsContainer && counters.length > 0) {
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !animated) {
@@ -294,7 +294,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     counters.forEach(counter => {
                         const target = +counter.getAttribute('data-target');
                         
-                        // Защита для нуля (дедлайны)
                         if (target === 0) {
                             counter.innerText = "0%";
                             return;
@@ -324,14 +323,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         updateCount();
                     });
                     
-                    statsObserver.unobserve(statsSection);
+                    statsObserver.unobserve(statsContainer);
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
 
-        statsObserver.observe(statsSection);
+        statsObserver.observe(statsContainer);
     }
 });
+
 // ==========================================================================
 // ОБЪЕДИНЕННАЯ СИСТЕМА УМНОЙ ФИЛЬТРАЦИИ И ДВУХСТОРОННЕГО РАСКРЫТИЯ ПОРТФОЛИО
 // ==========================================================================
@@ -464,18 +464,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-});
-// 14. ХИТРАЯ КОРРЕКЦИЯ АДРЕСНОЙ СТРОКИ (УБИРАЕМ ХВОСТЫ СТРАНИЦ)
-document.addEventListener("DOMContentLoaded", () => {
-    const currentUrl = window.location.href;
-
-    // Если в строке браузера горит index_en.html или index.html
-    if (currentUrl.includes("index_en.html") || currentUrl.includes("index.html")) {
-        
-        // Формируем идеально чистый путь без имени файла
-        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname.replace("index_en.html", "").replace("index.html", "");
-        
-        // Бесшумно подменяем адресную строку для пользователя
-        window.history.replaceState({ path: cleanUrl }, "", cleanUrl);
-    }
 });
