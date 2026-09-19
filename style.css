@@ -302,6 +302,72 @@ header {
     position: relative; 
     z-index: 5; 
 }
+/* --- НАМЕРТВО ФИКСИРУЕМ ГОРИЗОНТАЛЬНУЮ СТРУКТУРУ И ВОЗВРАЩАЕМ МАТОВУЮ КАПСУЛУ НА ПК --- */
+.bio-section .stats-container,
+.bio-container .stats-container {
+    max-width: 1050px !important;
+    margin: 0 auto 55px !important; /* Отступ снизу до текста */
+    display: flex !important;
+    flex-direction: row !important; /* НА ПК ВСЕГДА СТРОГО В ГОРИЗОНТАЛЬНЫЙ РЯД */
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    
+    /* ВОЗВРАЩАЕМ НАШИ ФИРМЕННЫЕ СТИЛИ КАПСУЛЫ */
+    background: rgba(13, 13, 17, 0.6) !important; /* Полупрозрачный матовый фон */
+    border: 1px solid rgba(0, 240, 255, 0.08) !important; /* Тонкая бирюзовая неоновая рамка */
+    padding: 30px 40px !important; /* Внутренние отступы, чтобы капсула была объемной */
+    border-radius: 50px !important; /* Делаем форму идеальной скругленной капсулы */
+    backdrop-filter: blur(12px) !important; /* Дизайнерское размытие под панелью */
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important; /* Глубокая тень */
+}
+
+
+.bio-section .stat-item,
+.bio-container .stat-item {
+    flex: 1 !important;
+    position: relative !important;
+    display: block !important;
+}
+
+/* Изящные неоновые нити-разделители между числами на ПК */
+.bio-section .stat-item:not(:last-child)::after,
+.bio-container .stat-item:not(:last-child)::after {
+    content: '' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 15% !important;
+    height: 70% !important;
+    width: 1px !important;
+    background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.2), transparent) !important;
+    display: block !important;
+}
+
+.bio-section .stat-number,
+.bio-container .stat-number {
+    font-size: 52px !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
+    line-height: 1 !important;
+    background: linear-gradient(135deg, #00f0ff, #ff007f) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    display: inline-block !important;
+}
+
+.bio-section .stat-text,
+.bio-container .stat-text {
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: #66666e !important;
+    font-weight: 700 !important;
+    display: block !important;
+}
+
 .bio-text p { 
     font-size: 16px; 
     color: #b0b0b8; 
@@ -897,6 +963,68 @@ footer#contact {
 
     /* УВЕЛИЧЕННАЯ КНОПКА НАВЕРХ ДЛЯ ТЕЛЕФОНОВ */
     .back-to-top { bottom: 25px !important; right: 25px !important; width: 54px !important; height: 54px !important; font-size: 18px !important; background: rgba(5, 5, 7, 0.9) !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; }
+    /* ...какие-то твои прошлые мобильные стили... */
+    .modal-content { width: 92% !important; padding-top: 51.75% !important; }
+    .close-modal { top: -35px !important; font-size: 24px !important; }
+    .toggle-video-btn { padding: 6px 14px !important; font-size: 10px !important; }
+
+
+    /* ==========================================================================
+       ЖЕСТКО ИЗОЛИРОВАННЫЙ МОБИЛЬНЫЙ ДВУХКОЛОНОЧНЫЙ ФИКС (ТОЛЬКО ДО 768px)
+       ========================================================================== */
+    
+    /* 1. Настраиваем сетку строго на 2 колонки в ряд только на телефонах */
+    .portfolio-section .grid, .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        display: grid !important;
+    }
+
+    /* 2. Позволяем карточкам адаптироваться */
+    .portfolio-section .card, .card {
+        height: 100% !important;
+        max-height: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 3. Уменьшаем мобильные шрифты для узких колонок */
+    .portfolio-section .card h3, .card h3, .card .card-title {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+        margin-top: 10px !important;
+        margin-bottom: 5px !important;
+    }
+    .portfolio-section .card p, .card p, .card .card-desc {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* 4. Компактная плашка категории на смартфонах */
+    .portfolio-section .card .badge, .card .badge, .card span.badge {
+        font-size: 8px !important;
+        padding: 2px 6px !important;
+        width: auto !important;
+        display: inline-block !important;
+    }
+
+    /* 5. Удобная плитка кнопок фильтров 2х2 для пальца */
+    .portfolio-filters {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        margin-bottom: 30px !important;
+        width: 100% !important;
+    }
+    .filter-btn {
+        padding: 12px 10px !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+} /* ЗДЕСЬ СТРОГО ЗАКРЫВАЕТСЯ ВЕСЬ МОБИЛЬНЫЙ МЕДИА-ЗАПРОС САЙТА! */
 
 /* Изящные матовые кнопки с аккуратными рамками */
 .social-links .social-btn {
@@ -914,7 +1042,7 @@ footer#contact {
 .social-links .social-btn.tg:hover { border-color: #3ea6ff !important; color: #3ea6ff !important; background: rgba(62, 166, 255, 0.02) !important; }
 .social-links .social-btn.kw:hover { border-color: #10b981 !important; color: #10b981 !important; background: rgba(16, 185, 129, 0.02) !important; }
 .social-links .social-btn.yt:hover { border-color: #ff4e4e !important; color: #ff4e4e !important; background: rgba(255, 78, 78, 0.02) !important; }
-}
+
 /* --- АВТОМАТИЧЕСКОЕ РАСТВОРЕНИЕ ШТОРКИ ПРИ ЗАГРУЗКЕ --- */
 @keyframes autoHideOverlay {
     0% { 
@@ -1053,6 +1181,7 @@ footer#contact {
         padding: 80px 6% !important; /* Компактные отступы секции на смартфонах */
     }
 }
+
     /* МОБИЛЬНАЯ АДАПТАЦИЯ БЛОКА СТАТИСТИКИ */
     .stats-container {
         flex-direction: column !important; /* Выстраиваем в столбик на смартфонах */
@@ -1176,3 +1305,36 @@ footer#contact {
     0% { transform: scale(1); opacity: 0.6; }
     100% { transform: scale(2.5); opacity: 0; }
 }
+/* ==========================================================================
+   ЖЕСТКО ИЗОЛИРОВАННЫЙ МОБИЛЬНЫЙ БЛОК ДЛЯ КАПСУЛЫ (СТРОГО ДО 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .bio-section .stats-container,
+    .bio-container .stats-container {
+        flex-direction: column !important; /* Перестраиваем цифры в столбик ТОЛЬКО на смартфонах */
+        gap: 35px !important;              /* Расстояние между счетчиками */
+        padding: 35px 20px !important;     /* Внутренние отступы бокса на телефонах */
+        border-radius: 16px !important;    /* На смартфонах делаем углы более строгими */
+        margin-bottom: 45px !important;    /* Отступ до начала текста */
+        max-width: 100% !important;
+        width: 100% !important;
+        background: rgba(13, 13, 17, 0.6) !important;
+    }
+    
+    .bio-section .stat-number,
+    .bio-container .stat-number {
+        font-size: 38px !important;        /* Чуть уменьшаем цифры под мобильный экран */
+    }
+
+    .bio-section .stat-text,
+    .bio-container .stat-text {
+        letter-spacing: 1.5px !important;  /* Слегка поджимаем межбуквенный интервал */
+    }
+    
+    /* Полностью отключаем боковые вертикальные нити-разделители на смартфонах */
+    .bio-section .stat-item:not(:last-child)::after,
+    .bio-container .stat-item:not(:last-child)::after {
+        display: none !important;
+    }
+}
+/* ========================================================================== */
